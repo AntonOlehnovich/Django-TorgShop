@@ -10,14 +10,19 @@ from product.models import Category, Product
 def index(request):
     setting = Setting.objects.get(pk=1)
     category = Category.objects.all()
+    products_slider = Product.objects.all().order_by('-id')[:4]
     page = "home"
-    context = {'setting': setting, 'page': page, 'category': category}
+    context = {'setting': setting,
+               'page': page,
+               'products_slider': products_slider,
+               'category': category}
     return render(request, 'index.html', context)
 
 
 def aboutus(request):
     setting = Setting.objects.get(pk=1)
-    context = {'setting': setting}
+    category = Category.objects.all()# временно
+    context = {'setting': setting, 'category': category}
     return render(request, 'about.html', context)
 
 def contactus(request):
@@ -35,8 +40,9 @@ def contactus(request):
             return HttpResponseRedirect('/contact')
 
     setting = Setting.objects.get(pk=1)
+    category = Category.objects.all()# временно
     form = ContactForm
-    context = {'setting': setting, 'form': form}
+    context = {'setting': setting, 'form': form, 'category': category}
     return render(request, 'contactus.html', context)
 
 def category_products(request, id, slug):
