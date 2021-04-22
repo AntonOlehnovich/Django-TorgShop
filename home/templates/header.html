@@ -45,7 +45,24 @@
 						</a>
 					</div>
 					<!-- /Logo -->
+<script>
 
+  $(function() {
+    $("#query").autocomplete({
+      source: "/search_auto/",
+      select: function (event, ui) { //item selected
+        AutoCompleteSelectHandler(event, ui)
+      },
+      minLength: 2,
+    });
+  });
+
+  function AutoCompleteSelectHandler(event, ui)
+  {
+    var selectedObj = ui.item;
+  }
+
+</script>
 					<!-- Search -->
 					<div class="header-search">
 						<form action="/search/" method="post">
