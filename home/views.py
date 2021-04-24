@@ -105,3 +105,5 @@ def product_detail(request, id, slug):
                'images': images,
                'comments': comments,}
     return render(request, 'product_detail.html', context)
+
+
