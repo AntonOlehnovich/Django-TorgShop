@@ -6,7 +6,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from product.models import Category
-from user.forms import SignUpForm
+from user.forms import SignUpForm, UserUpdateForm, ProfileUpdateForm
 from user.models import UserProfile
 
 @login_required(login_url='/login') # Check login
@@ -70,3 +70,24 @@ def signup_form(request):
 def logout_func(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+@login_required(login_url='/login') # Check login
+def user_update(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)  # request.user is user  data
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.userprofile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Ваш профиль успешно обновлен!')
+            return HttpResponseRedirect('/user')
+    else:
+        category = Category.objects.all()
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.userprofile)  # "userprofile" model -> OneToOneField relatinon with user
+        context = {
+            'category': category,
+            'user_form': user_form,
+            'profile_form': profile_form
+        }
+        return render(request, 'user_update.html', context)
