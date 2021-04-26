@@ -6,6 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
+from home.models import FAQ
 from order.models import Order, OrderProduct
 from product.models import Category, Comment
 from user.forms import SignUpForm, UserUpdateForm, ProfileUpdateForm
@@ -177,3 +178,13 @@ def user_deletecomment(request, id):
     Comment.objects.filter(id=id, user_id=current_user.id).delete()
     messages.success(request, 'Отзыв удалён')
     return HttpResponseRedirect('/user/comments')
+
+
+def faq(request):
+    category = Category.objects.all()
+    faq = FAQ.objects.filter(status="True").order_by("ordernumber")
+    context = {
+        'category': category,
+        'faq': faq,
+    }
+    return render(request, 'faq.html', context)
