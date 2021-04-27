@@ -8,7 +8,7 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/">Home</a></li>
+                <li><a href="/">Главная</a></li>
                 <li class="active">Отзывы пользователя</li>
             </ul>
         </div>
@@ -50,7 +50,7 @@
                                 <td class="text-center">{{ rs.status}} </td>
                                 <td class="text-center">{{ rs.create_at}} </td>
                                 <td class="text-center">
-                                    <a class="primary-btn" href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('Отзыв будет удалён! Вы уверены?')"> Delete </a>
+                                    <a class="primary-btn" href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('Отзыв будет удалён! Вы уверены?')"> Удалить </a>
                                 </td>
                             </tr>
                         {% endfor %}

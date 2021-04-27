@@ -11,7 +11,7 @@
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="/">Home</a></li>
+				<li><a href="/">Главная</a></li>
 				<li class="active">Заказ</li>
 			</ul>
 		</div>
@@ -52,7 +52,7 @@
                             <p><label for="id_first_name">Страна:</label>
                                 <input type="text" name="country" class="input" id="id_country" value="{{ profile.country }}"></p>
                             <div class="pull-right">
-                                <button  type="submit" class="primary-btn">Завершить заказ</button>
+                                <button  type="submit" class="primary-btn">Оформить заказ</button>
                             </div>
                         </div>
 
@@ -66,7 +66,7 @@
                                 <h4 class="title">Платёжная информация</h4>
                             </div>
                             <p><label for="id_first_name">Итого:</label>
-                                <input type="text" name="total" class="input" readonly value="${{ total }}"></p>
+                                <input type="text" name="total" class="input" readonly value="Br {{ total }}"></p>
                             <p><label for="id_first_name">Имя держателя карты:</label>
                                 <input type="text" name="holder" class="input"  value=""></p>
                             <p><label for="id_first_name">Номер кредитной карты:</label>
@@ -107,9 +107,9 @@
                                         <a href="/product/{{ rs.product.id }}/{{ rs.product.slug }}">{{rs.product}}</a>
                                     </td>
                                     <td class="price text-center"><strong>
-                                        ${{ rs.product.price }}</strong></td>
+                                        Br {{ rs.product.price }}</strong></td>
                                     <td class="qty text-center"><strong>{{rs.quantity}}</strong></td>
-                                    <td class="total text-center"><strong class="primary-color">${{ rs.amount }}</strong></td>
+                                    <td class="total text-center"><strong class="primary-color">Br {{ rs.amount }}</strong></td>
                                 </tr>
 
                             {% endfor %}
@@ -119,7 +119,7 @@
                             <tr>
                                 <th class="empty" colspan="3"></th>
                                 <th>Промежуточный итог</th>
-                                <th colspan="2" class="sub-total">${{ total }}</th>
+                                <th colspan="2" class="sub-total">Br {{ total }}</th>
                             </tr>
                             <tr>
                                 <th class="empty" colspan="3"></th>
@@ -129,7 +129,7 @@
                             <tr>
                                 <th class="empty" colspan="3"></th>
                                 <th>Итого</th>
-                                <th colspan="2" class="total">${{ total }}</th>
+                                <th colspan="2" class="total">Br {{ total }}</th>
                             </tr>
                             </tfoot>
                         </table>

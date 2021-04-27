@@ -9,7 +9,7 @@
 				<!-- section title -->
 				<div class="col-md-12">
 					<div class="section-title">
-						<h2 class="title">Latest Products</h2>
+						<h2 class="title">Последние продукты</h2>
 					</div>
 				</div>
 				<!-- section title -->
@@ -18,11 +18,11 @@
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="product product-single">
 						<div class="product-thumb">
-							<a href="/product/{{ rs.id }}/{{ rs.slug }}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+							<a href="/product/{{ rs.id }}/{{ rs.slug }}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Смотреть</a>
 							<img src="{{ rs.image.url }}" alt="" style="height: 200px">
 						</div>
 						<div class="product-body">
-							<h3 class="product-price">${{ rs.price }}</h3>
+							<h3 class="product-price">Br {{ rs.price }}</h3>
 							<div class="product-rating">
                                 <i class="fa fa-star{% if rs.avaregereview < 1%}-o empty{% endif%}"></i>
                                 <i class="fa fa-star{% if rs.avaregereview < 2%}-o empty{% endif%}"></i>
@@ -36,7 +36,7 @@
 							<div class="product-btns">
 								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-								<a href="/order/addtoshopcart/{{ rs.id }}" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+								<a href="/order/addtoshopcart/{{ rs.id }}" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> В корзину</a>
 							</div>
 						</div>
 					</div>
@@ -54,7 +54,7 @@
 				<!-- section title -->
 				<div class="col-md-12">
 					<div class="section-title">
-						<h2 class="title">Picked For You</h2>
+						<h2 class="title">Выбрано для Вас</h2>
 					</div>
 				</div>
 				<!-- section title -->
@@ -65,11 +65,11 @@
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="product product-single">
 						<div class="product-thumb">
-							<a href="/product/{{ rs.id }}/{{ rs.slug }}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
+							<a href="/product/{{ rs.id }}/{{ rs.slug }}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Смотреть</a>
 							<img src="{{ rs.image.url }}" alt="" style="height: 200px">
 						</div>
 						<div class="product-body">
-							<h3 class="product-price">${{ rs.price }}</h3>
+							<h3 class="product-price">Br {{ rs.price }}</h3>
 							<div class="product-rating">
                                 <i class="fa fa-star{% if rs.avaregereview < 1%}-o empty{% endif%}"></i>
                                 <i class="fa fa-star{% if rs.avaregereview < 2%}-o empty{% endif%}"></i>
@@ -83,7 +83,7 @@
 							<div class="product-btns">
 								<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
 								<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-								<a href="/order/addtoshopcart/{{ rs.id }}" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+								<a href="/order/addtoshopcart/{{ rs.id }}" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> В корзину</a>
 							</div>
 						</div>
 					</div>

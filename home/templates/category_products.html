@@ -1,6 +1,6 @@
 {% extends 'homebase.html' %}
 
-{% block title %} О нас- {{ setting.title }} {% endblock %}
+{% block title %} Список продуктов категории {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -12,8 +12,8 @@
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="/">Home</a></li>
-				<li class="active">About Us</li>
+				<li><a href="/">Главная</a></li>
+				<li class="active">Список продуктов категории</li>
 			</ul>
 		</div>
 	</div>
@@ -211,10 +211,10 @@
 							<table class="shopping-cart-table table">
 								<thead>
 									<tr>
-										<th>Product</th>
+										<th>Продукт</th>
 										<th></th>
-										<th class="text-center">Price</th>
-										<th class="text-center">Quantity</th>
+										<th class="text-center">Цена</th>
+										<th class="text-center">Количество</th>
 
 										<th class="text-right"></th>
 									</tr>
@@ -228,10 +228,10 @@
                                                 <img src="{{ rs.image.url }}" alt="" style="height: 100px">
                                             </a></td>
 										<td class="details"> <a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title}}</a></td>
-										<td class="price text-center"><strong>${{ rs.price }}</strong><br><del class="font-weak"><small>$40.00</small></del></td>
-										<td class="qty text-center"><input class="input" type="number" value="1"></td>
+										<td class="price text-center"><strong>Br {{ rs.price }}</strong><br></td>
+										<td class="qty text-center"><input class="input" type="number" value="1" min="1" max="{{ rs.amount }}"></td>
 
-										<td class="text-right"><a href="/order/addtoshopcart/{{ rs.id }}" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</a></td>
+										<td class="text-right"><a href="/order/addtoshopcart/{{ rs.id }}" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> В корзину</a></td>
 									</tr>
                                     {% endfor %}
 

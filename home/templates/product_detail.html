@@ -12,7 +12,7 @@
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="/">Home</a></li>
+				<li><a href="/">Главная</a></li>
 				<li><a href="/category/{{ product.category.id }}/{{ product.category.slug }}">{{ product.category.title }}</a></li>
 				<li class="active">{{ product.title }}</li>
 			</ul>
@@ -53,12 +53,8 @@
 					</div>
 					<div class="col-md-6">
 						<div class="product-body">
-							<div class="product-label">
-								<span>New</span>
-								<span class="sale">-20%</span>
-							</div>
 							<h2 class="product-name">{{ product.title }}</h2>
-							<h3 class="product-price">{{ product.price }}<del class="product-old-price">$45.00</del></h3>
+							<h3 class="product-price">Br {{ product.price }}</h3>
 							<div>
 								<div class="product-rating">
                                     <i class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"></i>
@@ -68,7 +64,7 @@
                                     <i class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
                                     {{ product.avaregereview |stringformat:".2f"}}
                                 </div>
-								<a href="#tab1"> {{ product.countreview}}  Review(s) / Add Review</a>
+								<a href="#tab1"> {{ product.countreview}} Отзывы / Добавить отзыв</a>
 							</div>
 							<p><strong>Availability:</strong> In Stock</p>
 							<p><strong>Brand:</strong> E-SHOP</p>
@@ -96,7 +92,7 @@
 									<span class="text-uppercase">QTY: </span>
 									<input class="input" name="quantity" type="number" value="1" min="1" max="{{ product.amount }}">
 								</div>
-								<button type="submit" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+								<button type="submit" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> В корзину</button>
                                 </form>
 
 								<div class="pull-right">
@@ -110,8 +106,8 @@
 					<div class="col-md-12">
 						<div class="product-tab">
 							<ul class="tab-nav">
-								<li class="active"><a data-toggle="tab" href="#tab1">Details</a></li>
-								<li><a data-toggle="tab" href="#tab2">Reviews ({{ product.countreview }})</a></li>
+								<li class="active"><a data-toggle="tab" href="#tab1">Детали</a></li>
+								<li><a data-toggle="tab" href="#tab2">Отзывы ({{ product.countreview }})</a></li>
 							</ul>
 							<div class="tab-content">
 								<div id="tab1" class="tab-pane fade in active">

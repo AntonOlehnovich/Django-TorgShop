@@ -11,7 +11,7 @@
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="/">Home</a></li>
+				<li><a href="/">Главная</a></li>
 				<li class="active">Продукты заказов</li>
 			</ul>
 		</div>
@@ -37,29 +37,29 @@
 
                         <table class="shopping-cart-table table">
                             <tr>
-                                <th class="text-left">Номер </th>
-                                <th class="text-left">Название продукта </th>
-                                <th class="text-left">Цена </th>
-                                <th class="text-left">Количество </th>
-                                <th class="text-left">Сумма </th>
-                                <th class="text-left">Статус </th>
-                                <th class="text-left">Дата </th>
-                                <th class="text-left">Детали </th>
+                                <th class="text-center">Номер </th>
+                                <th class="text-center">Название продукта </th>
+                                <th class="text-center">Цена </th>
+                                <th class="text-center">Количество </th>
+                                <th class="text-center">Сумма </th>
+                                <th class="text-center">Статус </th>
+                                <th class="text-center">Дата </th>
+                                <th class="text-center">Детали </th>
                             </tr>
                             {% for rs in order_product %}
                                 <tr>
-                                    <td class="text-left">
+                                    <td class="text-center">
                                         <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">
                                                 <img src="{{rs.product.image.url }}" height="80">
                                         </a>
                                     </td>
-                                    <td class="text-left">{{ rs.product.title}}</td>
-                                    <td class="text-left">{{ rs.price}} </td>
-                                    <td class="text-left">{{ rs.quantity}} </td>
-                                    <td class="text-left">{{ rs.amount}} </td>
-                                    <td class="text-left">{{ rs.status}} </td>
-                                    <td class="text-left">{{ rs.create_at}} </td>
-                                    <td class="text-left"><a class="primary-btn" href="/user/order_product_detail/{{ rs.id }}/{{ rs.order_id }}"> Детали </a></td>
+                                    <td class="text-center">{{ rs.product.title}}</td>
+                                    <td class="text-center">Br {{ rs.price}} </td>
+                                    <td class="text-center">{{ rs.quantity}} </td>
+                                    <td class="text-center">Br {{ rs.amount}} </td>
+                                    <td class="text-center">{{ rs.status}} </td>
+                                    <td class="text-center">{{ rs.create_at}} </td>
+                                    <td class="text-center"><a class="primary-btn" href="/user/order_product_detail/{{ rs.id }}/{{ rs.order_id }}"> Детали </a></td>
                                 </tr>
                             {% endfor %}
 
