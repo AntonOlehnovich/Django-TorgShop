@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Детали</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm 1.5cm 3.5cm 1.5cm;
+            @bottom-right{
+            content: "Страница " counter(page) " из " counter(pages);
+        }
+        }
+
+  .section-title {
+  position: relative;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-bottom: 1px solid #DADADA;
+}
+
+.section-title .title {
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.section-title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1.5px;
+  height: 3px;
+  width: 60px;
+  background-color: #F8694A;
+}
+ .shopping-cart-table>tbody>tr>td, .shopping-cart-table>tbody>tr>th, .shopping-cart-table>tfoot>tr>td, .shopping-cart-table>tfoot>tr>th, .shopping-cart-table>thead>tr>td, .shopping-cart-table>thead>tr>th {
+  padding: 15px 0px;
+  vertical-align: middle;
+  border-top: 1px solid #DADADA;
+}
+
+.shopping-cart-table>thead>tr>th {
+  color: #30323A;
+  text-transform: uppercase;
+  border-bottom: 1px solid #DADADA;
+}
+
+.shopping-cart-table>tbody>tr:last-child>td {
+  border-bottom: 1px solid #DADADA;
+}
+
+.shopping-cart-table>tfoot>tr>td, .shopping-cart-table>tfoot>tr>th {
+  color: #30323A;
+  border-top: 0px
+}
+
+.shopping-cart-table>tfoot>tr>td:not(.empty), .shopping-cart-table>tfoot>tr>th:not(.empty) {
+  padding: 15px;
+  background-color: #F6F7F8;
+  border: 1px solid #DADADA;
+}
+
+.shopping-cart-table>tbody>tr>.details>a {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.shopping-cart-table>tbody>tr>.thumb>img {
+  width: 60px;
+}
+
+.shopping-cart-table>tbody>tr>.qty .input {
+  width: 90px;
+}
+
+.shopping-cart-table>tbody>tr>.price {
+  font-size: 18px;
+}
+
+.shopping-cart-table>tbody>tr>.total {
+  font-size: 18px;
+}
+
+.shopping-cart-table>tfoot>tr>.sub-total {
+  font-size: 18px;
+}
+
+.shopping-cart-table>tfoot>tr>.total {
+  font-size: 24px;
+  color: #F8694A;
+}
+    </style>
+</head>
+<body>
+<div class="col-md-9">
+                    <div class="order-summary clearfix">
+                        <div class="section-title">
+                            <h3 class="title">Детали заказа</h3>
+                        </div>
+
+                        <table class="shopping-cart-table table">
+                            <tr>
+                                <th class="text-left">Имя Фамилия</th>
+                                <td class="text-left">{{ order.first_name}} {{ order.last_name }} </td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Телефон</th>
+                                <td class="text-left">{{ order.phone}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Адрес</th>
+                                <td class="text-left">{{ order.address}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Город</th>
+                                <td class="text-left">{{ order.city}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Страна</th>
+                                <td class="text-left">{{ order.country}}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-left">Статус</th>
+                                <td class="text-left">{{ order.status}}</td>
+                            </tr>
+
+                            <tr>
+                                <th class="text-left">Дата</th>
+                                <td class="text-left">{{ order.create_at}}</td>
+                            </tr>
+
+                            <th class="text-left">Информация о доставке</th>
+                            <td class="text-left">{{ order.adminnote}}</td>
+                            </tr>
+
+                        </table>
+
+                        <div class="section-title">
+                            <h4 class="title">Список заказа</h4>
+                        </div>
+
+                        <table class="shopping-cart-table table">
+                            <tr>
+                                <th class="text-center">Номер </th>
+                                <th class="text-center">Название продукта </th>
+                                <th class="text-center">Цена </th>
+                                <th class="text-center">Количество </th>
+                                <th class="text-center">Сумма </th>
+                                <th class="text-center">Статус </th>
+
+                            </tr>
+                            {% for rs in orderitems %}
+                                <tr>
+                                    <td class="text-center">
+                                        <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">
+                                                <img src="{{rs.product.image.url }}" style="width: 25px; height: 25px;">
+                                        </a>
+                                    </td>
+                                    <td class="text-center">{{ rs.product.title}}</td>
+                                    <td class="text-center">Br {{ rs.price}} </td>
+                                    <td class="text-center">{{ rs.quantity}} </td>
+                                    <td class="text-center">Br {{ rs.amount}} </td>
+                                    <td class="text-center">{{ rs.status}} </td>
+
+                                </tr>
+                            {% endfor %}
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+</body>
+</html>

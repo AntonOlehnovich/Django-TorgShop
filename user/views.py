@@ -1,3 +1,8 @@
+import csv
+import datetime
+import tempfile
+
+import xlwt
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
@@ -6,6 +11,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
+from django.template.loader import render_to_string
+from weasyprint import HTML
+
 from home.models import FAQ
 from order.models import Order, OrderProduct
 from product.models import Category, Comment
@@ -188,3 +196,121 @@ def faq(request):
         'faq': faq,
     }
     return render(request, 'faq.html', context)
+
+def export_csv(request, id):
+    response = HttpResponse(content_type='text/csv; charset=windows-1251')
+    response['Content-Disposition'] = 'attachment; filename= Orders' + \
+        str(datetime.datetime.now())+'.csv'
+    writer = csv.writer(response)
+    writer.writerow(['Список заказа'])
+    writer.writerow(['Название продукта', 'Цена', 'Количество', 'Сумма', 'Статус', 'Дата'])
+    current_user = request.user
+    order = Order.objects.get(user_id=current_user.id, id=id)
+    orderitems = OrderProduct.objects.filter(order_id=id)
+    total = 0
+    for rs in orderitems:
+        total += rs.price
+        writer.writerow([rs.product.title, 'Br '+str(rs.price), rs.quantity, rs.amount, rs.status, rs.create_at])
+    writer.writerow([])
+    writer.writerow(['Итого к оплате', 'Br '+str(total)])
+    writer.writerow([])
+    writer.writerow(['Детали заказа'])
+    writer.writerow(['Имя Фамилия', 'Телефон', 'Адрес', 'Город', 'Страна', 'Статус', 'Дата'])
+    writer.writerow([order.first_name + ' ' + order.last_name, order.phone, order.address, order.city, order.country, order.status,
+                     order.create_at])
+    return response
+
+
+def export_excel(request, id):
+    response = HttpResponse(content_type='application/ms-excel; charset=windows-1251')
+    response['Content-Disposition'] = 'attachment; filename= Orders' + \
+                                      str(datetime.datetime.now()) + '.xls'
+    wb = xlwt.Workbook(encoding="utf-8")
+    ws = wb.add_sheet('Orders')
+    row_num = 0
+    alignment = xlwt.Alignment()
+    alignment.horz = xlwt.Alignment.HORZ_CENTER
+    font_style = xlwt.XFStyle()
+    font_style_1 = xlwt.XFStyle()
+    font_style_2 = xlwt.XFStyle()
+    font_style_3 = xlwt.easyxf('pattern: pattern solid, fore_colour violet;')
+    font_style.alignment = alignment
+    font_style_1.alignment = alignment
+    font_style_2.alignment = alignment
+    font_style.font.bold = True
+    font_style_1.font.bold = False
+    font_style.font.colour_index = xlwt.Style.colour_map['orange']
+    font_style_1.font.colour_index = xlwt.Style.colour_map['blue']
+    font_style_2.font.colour_index = xlwt.Style.colour_map['green']
+    ws.write(row_num, 0, 'Список заказа', font_style_2)
+    row_num += 1
+    columns = ['Название продукта', 'Цена', 'Количество', 'Сумма', 'Статус', 'Дата']
+    columns_1 = ['Имя Фамилия', 'Телефон', 'Адрес', 'Город', 'Страна', 'Статус', 'Дата']
+    ws.col(0).width = 256 * 40
+    ws.col(1).width = 256 * 20
+    ws.col(2).width = 256 * 30
+    ws.col(3).width = 256 * 20
+    ws.col(4).width = 256 * 20
+    ws.col(5).width = 256 * 40
+    ws.col(6).width = 256 * 40
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    current_user = request.user
+    order = Order.objects.get(user_id=current_user.id, id=id)
+    columns_2 = [order.first_name + ' ' + order.last_name, order.phone, order.address, order.city,
+                 order.country, order.status, order.create_at]
+    orderitems = OrderProduct.objects.filter(order_id=id).values_list('product__title', 'price', 'quantity',
+                                                                      'amount', 'status', 'create_at')
+    orderitem = OrderProduct.objects.filter(order_id=id)
+    total = 0
+    for rs in orderitem:
+        total += rs.price
+    for row in orderitems:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, str(row[col_num]), font_style_1)
+    row_num += 1
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, '', font_style_3)
+    row_num += 1
+    ws.write(row_num, 0, 'Итого к оплате', font_style)
+    ws.write(row_num, 1, 'Br ' + str(total), font_style_1)
+    row_num += 1
+    ws.write(row_num, 0, '', font_style_3)
+    ws.write(row_num, 1, '', font_style_3)
+    row_num += 1
+    ws.write(row_num, 0, 'Детали заказа', font_style_2)
+    row_num += 1
+    for col_num in range(len(columns_1)):
+        ws.write(row_num, col_num, columns_1[col_num], font_style)
+    row_num += 1
+    for col_num in range(len(columns_2)):
+        ws.write(row_num, col_num, str(columns_2[col_num]), font_style_1)
+    row_num += 1
+    for col_num in range(len(columns_2)):
+        ws.write(row_num, col_num, '', font_style_3)
+    wb.save(response)
+    return response
+
+
+def export_pdf(request, id):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename= Orders' + \
+                                      str(datetime.datetime.now()) + '.pdf'
+    response['Content-Transfer-Encoding'] = 'binary'
+    current_user = request.user
+    order = Order.objects.get(user_id=current_user.id, id=id)
+    orderitems = OrderProduct.objects.filter(order_id=id)
+    html_string = render_to_string(
+        'pdf-output.html', {'orderitems': orderitems, 'order': order, 'total': 0})
+    html = HTML(string=html_string, base_url=request.build_absolute_uri())
+    result = html.write_pdf()
+
+    with tempfile.NamedTemporaryFile(delete=True) as output:
+        output.write(result)
+        output.flush()
+        output.seek(0)
+        response.write(output.read())
+    return response

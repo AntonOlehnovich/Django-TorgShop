@@ -4,30 +4,110 @@
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
 {% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+{% block head %}
+<style>
+.animated-button {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0;
+  padding: 15px 30px;
+  overflow: hidden;
+  border: 2px solid;
+  border-bottom-width: 4px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: rgba(30, 255, 188, 1);
+  background: rgba(255, 255, 255, 1);
+  transition: color .3s, background .5s;
+}
+.animated-button:hover {
+  animation: stripes .75s infinite linear;
+  background: linear-gradient(45deg, rgba(30, 255, 188, 1) 25%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 50%, rgba(30, 255, 188, 1) 50%, rgba(30, 255, 188, 1) 75%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1));
+  background-size: 10px 10px;
+  color: #FF50E5;
+}
 
+.animated-button_1 {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0;
+  padding: 15px 30px;
+  overflow: hidden;
+  border: 2px solid;
+  border-bottom-width: 4px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: green;
+  background: rgba(255, 255, 255, 1);
+  transition: color .3s, background .5s;
+}
+.animated-button_1:hover {
+  animation: stripes .75s infinite linear;
+  background: linear-gradient(45deg, green 25%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 50%, green 50%, green 75%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1));
+  background-size: 10px 10px;
+  color: yellow;
+}
+
+.animated-button_2 {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0;
+  padding: 15px 30px;
+  overflow: hidden;
+  border: 2px solid;
+  border-bottom-width: 4px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: red;
+  background: rgba(255, 255, 255, 1);
+  transition: color .3s, background .5s;
+}
+.animated-button_2:hover {
+  animation: stripes .75s infinite linear;
+  background: linear-gradient(45deg, red 25%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 50%, red 50%, red 75%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1));
+  background-size: 10px 10px;
+  color: indigo;
+}
+
+@keyframes stripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 0;
+  }
+}
+</style>
+{% endblock %}
 {% block body %}
 
-	<!-- BREADCRUMB -->
-	<div id="breadcrumb">
-		<div class="container">
-			<ul class="breadcrumb">
-				<li><a href="/">Главная</a></li>
-				<li class="active">Детали заказа</li>
-			</ul>
-		</div>
-	</div>
-	<!-- /BREADCRUMB -->
-	<!-- section -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-            <div class="col-md-3">
-                {% include 'user_panel.html' %}
-            </div>
+    <!-- BREADCRUMB -->
+    <div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Главная</a></li>
+                <li class="active">Детали заказа</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /BREADCRUMB -->
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-3">
+                    {% include 'user_panel.html' %}
+                </div>
 
-            <div class="col-md-9">
+                <div class="col-md-9">
                     <div class="order-summary clearfix">
                         <div class="section-title">
                             <h3 class="title">Детали заказа</h3>
@@ -88,7 +168,7 @@
                                 <tr>
                                     <td class="text-center">
                                         <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">
-                                                <img src="{{rs.product.image.url }}" height="80">
+                                            <img src="{{rs.product.image.url }}" height="80">
                                         </a>
                                     </td>
                                     <td class="text-center">{{ rs.product.title}}</td>
@@ -101,15 +181,21 @@
                             {% endfor %}
 
                         </table>
-
+                        <table class="shopping-cart-table table">
+                            <tr>
+                                <th class="text-left"><a class="animated-button" href="/user/export_csv/{{ order.id }}"> Экспорт в CSV </a></th>
+                                <th class="text-center"><a class="animated-button_1" href="/user/export_excel/{{ order.id }}"> Экспорт в Excel </a></th>
+                                <th class="text-right"><a class="animated-button_2" href="/user/export_pdf/{{ order.id }}"> Экспорт в PDF </a></th>
+                            </tr>
+                        </table>
                     </div>
 
                 </div>
             </div>
-			<!-- /row -->
-		</div>
-		<!-- /container -->
-	</div>
-	<!-- /section -->
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
 
 {% endblock %}
