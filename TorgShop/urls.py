@@ -42,6 +42,7 @@ urlpatterns = [
     path('logout/', UserViews.logout_func, name='logout_func'),
     path('signup/', UserViews.signup_form, name='signup_form'),
     path('faq/', UserViews.faq, name='faq'),
+    path('ajaxcolor/', views.ajaxcolor, name='ajaxcolor'),
 ]
 
 if settings.DEBUG: # new

@@ -156,27 +156,31 @@
 
                         <table class="shopping-cart-table table">
                             <tr>
-                                <th class="text-center">Номер </th>
-                                <th class="text-center">Название продукта </th>
-                                <th class="text-center">Цена </th>
-                                <th class="text-center">Количество </th>
-                                <th class="text-center">Сумма </th>
-                                <th class="text-center">Статус </th>
-                                <th class="text-center">Дата </th>
+                                <th class="text-left">Id </th>
+                                <th class="text-left">Product Name </th>
+                                <th class="text-left">Price </th>
+                                <th class="text-left">Qauatity </th>
+                                <th class="text-left">Amount </th>
+                                <th class="text-left">Status </th>
+                                <th class="text-left">Date </th>
                             </tr>
                             {% for rs in orderitems %}
                                 <tr>
-                                    <td class="text-center">
+                                    <td class="text-left">
                                         <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">
-                                            <img src="{{rs.product.image.url }}" height="80">
+                                            {% if rs.variant.image_id > 0 %}
+                                                <img src="{{rs.variant.image }}" alt="" style="height: 50px">
+                                            {% else %}
+                                                <img src="{{rs.product.image.url}}" alt="" style="height: 50px">
+                                            {% endif %}
                                         </a>
                                     </td>
-                                    <td class="text-center">{{ rs.product.title}}</td>
-                                    <td class="text-center">Br {{ rs.price}} </td>
-                                    <td class="text-center">{{ rs.quantity}} </td>
-                                    <td class="text-center">Br {{ rs.amount}} </td>
-                                    <td class="text-center">{{ rs.status}} </td>
-                                    <td class="text-center">{{ rs.create_at}} </td>
+                                    <td class="text-left">{{ rs.product.title}} {{ rs.variant.size }}   {{ rs.variant.color }}</td>
+                                    <td class="text-left">{{ rs.price}} </td>
+                                    <td class="text-left">{{ rs.quantity}} </td>
+                                    <td class="text-left">{{ rs.amount}} </td>
+                                    <td class="text-left">{{ rs.status}} </td>
+                                    <td class="text-left">{{ rs.create_at}} </td>
                                 </tr>
                             {% endfor %}
 
