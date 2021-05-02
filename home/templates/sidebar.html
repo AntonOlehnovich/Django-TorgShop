@@ -15,12 +15,14 @@
                     {% endif %}
 					<span class="category-header">Категории <i class="fa fa-list"></i></span>
 
+            {% load myapptags %}
+            {% categorylist as category %}
             {% load mptt_tags %}
 
 					<ul class="category-list">
                         {% recursetree category %}
 						<li class="dropdown side-dropdown">
-							<a href="/category/{{ node.id }}/{{ node.slug }}" class="dropdown-toggle" {% if not node.is_leaf_node %} data-toggle="dropdown" aria-expanded="true" {% endif %}>{{ node.title }} <i class="fa fa-angle-right"></i></a>
+							<a href="{% url 'category_products' node.id node.slug %}" class="dropdown-toggle" {% if not node.is_leaf_node %} data-toggle="dropdown" aria-expanded="true" {% endif %}>{{ node.title }} <i class="fa fa-angle-right"></i></a>
 							<div class="custom-menu">
 								<div class="row">
 									<div class="col-md-4">

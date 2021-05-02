@@ -14,7 +14,7 @@ from product.models import Category, Product, Images, Comment, Variants
 
 def index(request):
     setting = Setting.objects.get(pk=1)
-    category = Category.objects.all()
+    #category = Category.objects.all()
     products_slider = Product.objects.all().order_by('id')[:4]   #first 4 products
     products_latest = Product.objects.all().order_by('-id')[:4]  #last 4 products
     products_picked = Product.objects.all().order_by('?')[:4]    #random selected 4 products
@@ -24,7 +24,8 @@ def index(request):
                'products_slider': products_slider,
                'products_latest': products_latest,
                'products_picked': products_picked,
-               'category': category}
+               #'category': category
+               }
     return render(request, 'index.html', context)
 
 

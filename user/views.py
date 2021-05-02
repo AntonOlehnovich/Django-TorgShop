@@ -22,10 +22,10 @@ from user.models import UserProfile
 
 @login_required(login_url='/login') # Check login
 def index(request):
-    category = Category.objects.all()
+    #category = Category.objects.all()
     current_user = request.user  # Access User Session information
     profile = UserProfile.objects.get(user_id=current_user.id)
-    context = {'category': category,
+    context = {#'category': category,
                'profile': profile}
     return render(request, 'user_profile.html', context)
 
@@ -46,8 +46,8 @@ def login_form(request):
             messages.warning(request, "Ошибка авторизации! Имя или пароль некорректны")
             return HttpResponseRedirect('/login')
     # Return an 'invalid login' error message.
-    category = Category.objects.all()
-    context = {'category': category}
+    #category = Category.objects.all()
+    context = { }
     return render(request, 'login_form.html', context)
 
 
@@ -72,8 +72,8 @@ def signup_form(request):
             messages.warning(request,form.errors)
             return HttpResponseRedirect('/signup')
     form = SignUpForm()
-    category = Category.objects.all()
-    context = {'category': category,
+    #category = Category.objects.all()
+    context = {#'category': category,
                'form': form,}
     return render(request, 'signup_form.html', context)
 
@@ -93,11 +93,11 @@ def user_update(request):
             messages.success(request, 'Ваш профиль успешно обновлен!')
             return HttpResponseRedirect('/user')
     else:
-        category = Category.objects.all()
+        #category = Category.objects.all()
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.userprofile)  # "userprofile" model -> OneToOneField relatinon with user
         context = {
-            'category': category,
+            #'category': category,
             'user_form': user_form,
             'profile_form': profile_form
         }
@@ -117,29 +117,30 @@ def user_password(request):
             messages.error(request, 'Пожалуйста, исправьте ошибку.<br>' + str(form.errors))
             return HttpResponseRedirect('/user/password')
     else:
-        category = Category.objects.all()
+        #category = Category.objects.all()
         form = PasswordChangeForm(request.user)
-        return render(request, 'user_password.html', {'form': form,  'category': category})
+        return render(request, 'user_password.html', {'form': form,  #'category': category
+                                                      })
 
 
 @login_required(login_url='/login') # Check login
 def user_orders(request):
-    category = Category.objects.all()
+    #category = Category.objects.all()
     current_user = request.user
     orders = Order.objects.filter(user_id=current_user.id)
-    context = {'category': category,
+    context = {#'category': category,
                'orders': orders, }
     return render(request, 'user_orders.html', context)
 
 
 @login_required(login_url='/login') # Check login
 def user_orderdetail(request, id):
-    category = Category.objects.all()
+    #category = Category.objects.all()
     current_user = request.user
     order = Order.objects.get(user_id=current_user.id, id=id)
     orderitems = OrderProduct.objects.filter(order_id=id)
     context = {
-        'category': category,
+        #'category': category,
         'order': order,
         'orderitems': orderitems,
     }
@@ -148,22 +149,22 @@ def user_orderdetail(request, id):
 
 @login_required(login_url='/login') # Check login
 def user_orders_product(request):
-    category = Category.objects.all()
+    #category = Category.objects.all()
     current_user = request.user
     order_product = OrderProduct.objects.filter(user_id=current_user.id)
-    context = {'category': category,
+    context = {#'category': category,
                'order_product': order_product, }
     return render(request, 'user_order_products.html', context)
 
 
 @login_required(login_url='/login') # Check login
 def user_order_product_detail(request, id, oid):
-    category = Category.objects.all()
+    #category = Category.objects.all()
     current_user = request.user
     order = Order.objects.get(user_id=current_user.id, id=oid)
     orderitems = OrderProduct.objects.filter(id=id, user_id=current_user.id)
     context = {
-        'category': category,
+        #'category': category,
         'order': order,
         'orderitems': orderitems,
     }
@@ -171,11 +172,11 @@ def user_order_product_detail(request, id, oid):
 
 
 def user_comments(request):
-    category = Category.objects.all()
+    #category = Category.objects.all()
     current_user = request.user
     comments = Comment.objects.filter(user_id=current_user.id)
     context = {
-        'category': category,
+        #'category': category,
         'comments': comments,
     }
     return render(request, 'user_comments.html', context)

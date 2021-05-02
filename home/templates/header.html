@@ -77,6 +77,8 @@
 							<input id="query" name="query" class="input search-input" type="text" placeholder="Введите ключевое слово">
 							<select name="catid" class="input search-categories">
 								<option value="0">Все</option>
+                            {% load myapptags %}
+                            {% categorylist as category %}
                             {% load mptt_tags %}
                                 {% recursetree category %}
                                  {% if  node.is_leaf_node %}
@@ -122,14 +124,16 @@
 
 						<!-- Cart -->
 						<li class="header-cart dropdown default-dropdown">
-							<a href="/shopcart/">
+							<a href="{% url 'shopcart' %}">
 								<div class="header-btns-icon">
 									<i class="fa fa-shopping-cart"></i>
-									<span class="qty">3</span>
+                                    {% load myapptags %}
+                                    {% shopcartcount user.id as count %}
+									<span class="qty">{{ count }}</span>
 								</div>
 								<strong class="text-uppercase">Корзина:</strong>
 								<br>
-								<span>35.20$</span>
+
 							</a>
 
 						</li>
