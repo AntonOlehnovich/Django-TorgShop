@@ -74,7 +74,7 @@ def deletefromcart(request,id):
     messages.success(request, "Ваш продукт удалён из корзины.")
     return HttpResponseRedirect("/shopcart")
 
-
+@login_required(login_url='/login') # Check login
 def orderproduct(request):
     category = Category.objects.all()
     current_user = request.user
