@@ -209,7 +209,7 @@ def export_csv(request, id):
     orderitems = OrderProduct.objects.filter(order_id=id)
     total = 0
     for rs in orderitems:
-        total += rs.price
+        total += rs.amount
         writer.writerow([rs.product.title, 'Br '+str(rs.price), rs.quantity, rs.amount, rs.status, rs.create_at])
     writer.writerow([])
     writer.writerow(['Итого к оплате', 'Br '+str(total)])
@@ -266,7 +266,7 @@ def export_excel(request, id):
     orderitem = OrderProduct.objects.filter(order_id=id)
     total = 0
     for rs in orderitem:
-        total += rs.price
+        total += rs.amount
     for row in orderitems:
         row_num += 1
         for col_num in range(len(row)):
@@ -303,8 +303,11 @@ def export_pdf(request, id):
     current_user = request.user
     order = Order.objects.get(user_id=current_user.id, id=id)
     orderitems = OrderProduct.objects.filter(order_id=id)
+    total = 0
+    for rs in orderitems:
+        total += rs.amount
     html_string = render_to_string(
-        'pdf-output.html', {'orderitems': orderitems, 'order': order, 'total': 0})
+        'pdf-output.html', {'orderitems': orderitems, 'order': order, 'total': total})
     html = HTML(string=html_string, base_url=request.build_absolute_uri())
     result = html.write_pdf()
 
