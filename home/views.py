@@ -6,6 +6,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.template.loader import render_to_string
+from django.utils import translation
 
 from home.forms import SearchForm
 from home.models import Setting, ContactForm, ContactMessage
@@ -138,3 +139,14 @@ def ajaxcolor(request):
         data = {'rendered_table': render_to_string('color_list.html', context=context)}
         return JsonResponse(data)
     return JsonResponse(data)
+
+
+def selectlanguage(request):
+    if request.method == 'POST':  # check post
+        cur_language = translation.get_language()
+        lasturl = request.META.get('HTTP_REFERER')
+        lang = request.POST['language']
+        translation.activate(lang)
+        request.session[translation.LANGUAGE_SESSION_KEY] = lang
+        # return HttpResponse(lang)
+        return HttpResponseRedirect("/" + lang)
