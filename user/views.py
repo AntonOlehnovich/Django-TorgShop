@@ -14,6 +14,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from weasyprint import HTML
 
+from TorgShop import settings
 from home.models import FAQ
 from order.models import Order, OrderProduct
 from product.models import Category, Comment
@@ -190,10 +191,15 @@ def user_deletecomment(request, id):
 
 
 def faq(request):
-    category = Category.objects.all()
-    faq = FAQ.objects.filter(status="True").order_by("ordernumber")
+    defaultlang = settings.LANGUAGE_CODE[0:2]
+    currentlang = request.LANGUAGE_CODE[0:2]
+
+    if defaultlang == currentlang:
+        faq = FAQ.objects.filter(status="True", lang=defaultlang).order_by("ordernumber")
+    else:
+        faq = FAQ.objects.filter(status="True", lang=currentlang).order_by("ordernumber")
+
     context = {
-        'category': category,
         'faq': faq,
     }
     return render(request, 'faq.html', context)

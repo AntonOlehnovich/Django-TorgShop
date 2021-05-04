@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.utils import translation
 
+from TorgShop import settings
 from home.forms import SearchForm
 from home.models import Setting, ContactForm, ContactMessage
 from product.models import Category, Product, Images, Comment, Variants
@@ -101,8 +102,28 @@ def search_auto(request):
 
 def product_detail(request, id, slug):
     query = request.GET.get('q')
-    product = Product.objects.get(pk=id)
+
+    # >>>>>>>>>>>>>>>> M U L T I   L A N G U G A E >>>>>> START
+    defaultlang = settings.LANGUAGE_CODE[0:2]  # en-EN
+    currentlang = request.LANGUAGE_CODE[0:2]
+    # category = categoryTree(0, '', currentlang)
     category = Category.objects.all()
+
+    product = Product.objects.get(pk=id)
+
+    if defaultlang != currentlang:
+        try:
+            prolang = Product.objects.raw(
+                'SELECT p.id,p.price,p.amount,p.image,p.variant,l.title, l.keywords, l.description,l.slug,l.detail '
+                'FROM product_product as p '
+                'INNER JOIN product_productlang as l '
+                'ON p.id = l.product_id '
+                'WHERE p.id=%s and l.lang=%s', [id, currentlang])
+            product = prolang[0]
+        except:
+            pass
+    # <<<<<<<<<< M U L T I   L A N G U G A E <<<<<<<<<<<<<<< end
+
     images = Images.objects.filter(product_id=id)
     comments = Comment.objects.filter(product_id=id, status='True')
     context = {'product': product, 'category': category,

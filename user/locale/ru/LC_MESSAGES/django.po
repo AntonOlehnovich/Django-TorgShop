@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-03 19:35+0300\n"
+"POT-Creation-Date: 2021-05-03 19:40+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,3 +31,7 @@ msgstr "Авторизация"
 #: .\user\templates\login_form.html:33
 msgid "Login Form"
 msgstr "Форма авторизации"
+
+#: .\user\templates\login_form.html:52
+msgid "Login"
+msgstr "Авторизоваться"

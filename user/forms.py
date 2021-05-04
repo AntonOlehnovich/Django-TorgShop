@@ -36,7 +36,7 @@ CITY = [
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('phone', 'address', 'city', 'country', 'image')
+        fields = ('phone', 'address', 'city', 'country', 'image', 'language')
         widgets = {
             'phone': TextInput(attrs={'class': 'input', 'placeholder': 'phone'}),
             'address': TextInput(attrs={'class': 'input', 'placeholder': 'address'}),
