@@ -217,7 +217,12 @@ def export_csv(request, id):
     total = 0
     for rs in orderitems:
         total += rs.amount
-        writer.writerow([rs.product.title, 'Br '+str(rs.price), rs.quantity, rs.amount, rs.status, rs.create_at])
+        if rs.product.variant == 'None':
+            writer.writerow([rs.product.title, 'Br '+str(rs.price), rs.quantity, rs.amount, rs.status, rs.create_at])
+        else:
+            writer.writerow(
+                [rs.product.title + " " + str(rs.variant.size) + " " + str(rs.variant.color), 'Br ' + str(rs.price), rs.quantity, rs.amount,
+                 rs.status, rs.create_at])
     writer.writerow([])
     writer.writerow(['Итого к оплате', 'Br '+str(total)])
     writer.writerow([])
@@ -251,15 +256,17 @@ def export_excel(request, id):
     font_style_2.font.colour_index = xlwt.Style.colour_map['green']
     ws.write(row_num, 0, 'Список заказа', font_style_2)
     row_num += 1
-    columns = ['Название продукта', 'Цена', 'Количество', 'Сумма', 'Статус', 'Дата']
+    columns = ['Название продукта', 'Класс энергопотребления','Цвет',  'Цена', 'Количество', 'Сумма', 'Статус', 'Дата']
     columns_1 = ['Имя Фамилия', 'Телефон', 'Адрес', 'Город', 'Страна', 'Статус', 'Дата']
     ws.col(0).width = 256 * 40
-    ws.col(1).width = 256 * 20
+    ws.col(1).width = 256 * 30
     ws.col(2).width = 256 * 30
     ws.col(3).width = 256 * 20
     ws.col(4).width = 256 * 20
-    ws.col(5).width = 256 * 40
-    ws.col(6).width = 256 * 40
+    ws.col(5).width = 256 * 15
+    ws.col(6).width = 256 * 30
+    ws.col(7).width = 256 * 40
+    ws.col(8).width = 256 * 40
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
@@ -268,7 +275,7 @@ def export_excel(request, id):
     order = Order.objects.get(user_id=current_user.id, id=id)
     columns_2 = [order.first_name + ' ' + order.last_name, order.phone, order.address, order.city,
                  order.country, order.status, order.create_at]
-    orderitems = OrderProduct.objects.filter(order_id=id).values_list('product__title', 'price', 'quantity',
+    orderitems = OrderProduct.objects.filter(order_id=id).values_list('product__title', 'variant__size__name', 'variant__color__name', 'price', 'quantity',
                                                                       'amount', 'status', 'create_at')
     orderitem = OrderProduct.objects.filter(order_id=id)
     total = 0
