@@ -1,25 +1,24 @@
 {% extends 'homebase.html' %}
-
-{% block title %} Список продуктов категории {% endblock %}
-{% block description %} {{ setting.description }} {% endblock %}
-{% block keywords %} {{ setting.keywords }} {% endblock %}
+{% load currency %}
+{% block title %}{{ catdata.title }} Products{% endblock %}
+{% block description %} {{ catdata.description }} {% endblock %}
+{% block keywords %} {{ category.keywords }} {% endblock %}
 
 {% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
 
 {% block body %}
 
-    <!-- BREADCRUMB -->
+	<!-- BREADCRUMB -->
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="/">Главная</a></li>
-				<li class="active">Список продуктов категории</li>
+				<li><a href="/">Home</a></li>
+				<li class="active">{{ catdata.title }} Products </li>
 			</ul>
 		</div>
 	</div>
 	<!-- /BREADCRUMB -->
-
-<!-- section -->
+	<!-- section -->
 	<div class="section">
 		<!-- container -->
 		<div class="container">
@@ -206,35 +205,33 @@
                             <div class="col-md-12">
 						<div class="order-summary clearfix">
 							<div class="section-title">
-								<h3 class="title">Список продуктов</h3>
+								<h3 class="title">Product List</h3>
 							</div>
 							<table class="shopping-cart-table table">
 								<thead>
 									<tr>
-										<th>Продукт</th>
+										<th>Product</th>
 										<th></th>
-										<th class="text-center">Цена</th>
-										<th class="text-center">Количество</th>
+										<th class="text-center">Price</th>
+										<th class="text-center">Quantity</th>
 
 										<th class="text-right"></th>
 									</tr>
 								</thead>
 								<tbody>
 
-                                    {% for rs in products %}
+                                {% for rs in products %}
 									<tr>
-										<td class="thumb">
-                                            <a href="/product/{{ rs.id }}/{{ rs.slug }}">
-                                                <img src="{{ rs.image.url }}" alt="" style="height: 100px">
-                                            </a></td>
-										<td class="details"> <a href="/product/{{ rs.id }}/{{ rs.slug }}">{{ rs.title}}</a></td>
-										<td class="price text-center"><strong>Br {{ rs.price }}</strong><br></td>
-										<td class="qty text-center"><input class="input" type="number" value="1" min="1" max="{{ rs.amount }}"></td>
+										<td class="thumb"><a href="{% url 'product_detail' rs.id rs.slug %}">
+                                            <img src="{{ rs.image.url }}" alt="" style="height: 100px">
+                                        </a></td>
+										<td class="details"> <a href="{% url 'product_detail' rs.id rs.slug %}">{{ rs.title }}</a>	</td>
+										<td class="price text-center"><strong>{{ rs.price|currency:request.session.currency }} {{ request.session.currency }}</strong><br><del class="font-weak"><small>$40.00</small></del></td>
+										<td class="qty text-center"><input class="input" type="number" value="1"></td>
 
-										<td class="text-right"><a href="/order/addtoshopcart/{{ rs.id }}" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> В корзину</a></td>
+										<td class="text-right"><a href="{% url "addtoshopcart" rs.id  %}" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</a></td>
 									</tr>
                                     {% endfor %}
-
 
 								</tbody>
 
