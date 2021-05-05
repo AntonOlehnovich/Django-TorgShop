@@ -13,7 +13,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.template.loader import render_to_string
 from weasyprint import HTML
-
+from django.utils import translation
 from TorgShop import settings
 from home.models import FAQ
 from order.models import Order, OrderProduct
@@ -41,14 +41,21 @@ def login_form(request):
             current_user = request.user
             userprofile = UserProfile.objects.get(user_id=current_user.id)
             request.session['userimage'] = userprofile.image.url
+            # *** Multi Langugae
+            request.session[translation.LANGUAGE_SESSION_KEY] = userprofile.language.code
+            request.session['currency'] = userprofile.currency.code
+            translation.activate(userprofile.language.code)
+
             # Redirect to a success page.
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/' + userprofile.language.code)
         else:
-            messages.warning(request, "Ошибка авторизации! Имя или пароль некорректны")
+            messages.warning(request, "Login Error !! Username or Password is incorrect")
             return HttpResponseRedirect('/login')
-    # Return an 'invalid login' error message.
-    #category = Category.objects.all()
-    context = { }
+        # Return an 'invalid login' error message.
+
+        # category = Category.objects.all()
+    context = {  # 'category': category
+    }
     return render(request, 'login_form.html', context)
 
 
@@ -81,6 +88,9 @@ def signup_form(request):
 
 def logout_func(request):
     logout(request)
+    if translation.LANGUAGE_SESSION_KEY in request.session:
+        del request.session[translation.LANGUAGE_SESSION_KEY]
+        del request.session['currency']
     return HttpResponseRedirect('/')
 
 @login_required(login_url='/login') # Check login
@@ -94,11 +104,11 @@ def user_update(request):
             messages.success(request, 'Ваш профиль успешно обновлен!')
             return HttpResponseRedirect('/user')
     else:
-        #category = Category.objects.all()
+        category = Category.objects.all()
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.userprofile)  # "userprofile" model -> OneToOneField relatinon with user
         context = {
-            #'category': category,
+            'category': category,
             'user_form': user_form,
             'profile_form': profile_form
         }
