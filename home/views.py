@@ -19,7 +19,7 @@ from home.models import Setting, ContactForm, ContactMessage, FAQ, SettingLang, 
 from TorgShop import settings
 from product.models import Category, Product, Images, Comment, Variants, ProductLang, CategoryLang
 from user.models import UserProfile
-
+lang = None
 
 def index(request):
     if not request.session.has_key('currency'):
@@ -62,6 +62,7 @@ def selectlanguage(request):
     if request.method == 'POST':  # check post
         cur_language = translation.get_language()
         lasturl= request.META.get('HTTP_REFERER')
+        global lang
         lang = request.POST['language']
         translation.activate(lang)
         request.session[translation.LANGUAGE_SESSION_KEY]=lang
@@ -244,9 +245,15 @@ def selectcurrency(request):
 
 @login_required(login_url='/login') # Check login
 def savelangcur(request):
+    global lang
+    if lang == None:
+        current_user = request.user
+        userprofile = UserProfile.objects.get(user_id=current_user.id)
+        lang = userprofile.language.code
     lasturl = request.META.get('HTTP_REFERER')
     current_user = request.user
-    language = Language.objects.get(code=request.LANGUAGE_CODE[0:2])
+    language = Language.objects.get(code=lang)
+    lang = None
     #Save to User profile database
     data = UserProfile.objects.get(user_id=current_user.id)
     data.language_id = language.id

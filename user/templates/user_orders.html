@@ -1,4 +1,5 @@
 {% extends 'homebase.html' %}
+{% load currency %}
 {% block title %} Список заказов {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
@@ -48,7 +49,7 @@
                                     <td class="text-left">{{ rs.id}} </td>
                                     <td class="text-left">{{ rs.first_name}} </td>
                                     <td class="text-left">{{ rs.last_name}} </td>
-                                    <td class="text-left">{{ rs.total}} </td>
+                                    <td class="text-left">{{ rs.total|currency:request.session.currency }} {{ request.session.currency }} </td>
                                     <td class="text-left">{{ rs.status}} </td>
                                     <td class="text-left">{{ rs.create_at}} </td>
                                     <td class="text-left"><a class="primary-btn" href="/user/orderdetail/{{ rs.id }}"> Детали </a></td>

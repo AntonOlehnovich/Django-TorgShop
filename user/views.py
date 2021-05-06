@@ -15,7 +15,7 @@ from django.template.loader import render_to_string
 from weasyprint import HTML
 from django.utils import translation
 from TorgShop import settings
-from home.models import FAQ
+from home.models import FAQ, Language
 from order.models import Order, OrderProduct
 from product.models import Category, Comment
 from user.forms import SignUpForm, UserUpdateForm, ProfileUpdateForm
@@ -67,12 +67,15 @@ def signup_form(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
+            language = Language.objects.get(code=request.LANGUAGE_CODE[0:2])
             login(request, user)
             # Create data in profile table for user
             current_user = request.user
             data = UserProfile()
             data.user_id = current_user.id
             data.image = "images/users/user.png"
+            data.language_id = language.id
+            data.currency_id = request.session['currency']
             data.save()
             messages.success(request, 'Ваш аккаунт успешно создан!')
             return HttpResponseRedirect('/')
@@ -228,13 +231,13 @@ def export_csv(request, id):
     for rs in orderitems:
         total += rs.amount
         if rs.product.variant == 'None':
-            writer.writerow([rs.product.title, 'Br '+str(rs.price), rs.quantity, rs.amount, rs.status, rs.create_at])
+            writer.writerow([rs.product.title, rs.price, rs.quantity, rs.amount, rs.status, rs.create_at])
         else:
             writer.writerow(
-                [rs.product.title + " " + str(rs.variant.size) + " " + str(rs.variant.color), 'Br ' + str(rs.price), rs.quantity, rs.amount,
+                [rs.product.title + " " + str(rs.variant.size) + " " + str(rs.variant.color), rs.price, rs.quantity, rs.amount,
                  rs.status, rs.create_at])
     writer.writerow([])
-    writer.writerow(['Итого к оплате', 'Br '+str(total)])
+    writer.writerow(['Итого к оплате', total])
     writer.writerow([])
     writer.writerow(['Детали заказа'])
     writer.writerow(['Имя Фамилия', 'Телефон', 'Адрес', 'Город', 'Страна', 'Статус', 'Дата'])
@@ -300,7 +303,7 @@ def export_excel(request, id):
         ws.write(row_num, col_num, '', font_style_3)
     row_num += 1
     ws.write(row_num, 0, 'Итого к оплате', font_style)
-    ws.write(row_num, 1, 'Br ' + str(total), font_style_1)
+    ws.write(row_num, 1, total, font_style_1)
     row_num += 1
     ws.write(row_num, 0, '', font_style_3)
     ws.write(row_num, 1, '', font_style_3)
