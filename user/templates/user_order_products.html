@@ -1,6 +1,6 @@
 {% extends 'homebase.html' %}
-
-{% block title %} Order Detail {% endblock %}
+{% load i18n %}
+{% block title %} {% trans "Order details" %} {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -12,8 +12,8 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li class="active">Order Produts</li>
+                <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li class="active">{% trans "Order Products" %}</li>
             </ul>
         </div>
     </div>
@@ -31,24 +31,24 @@
                 <div class="col-md-9">
                     <div class="order-summary clearfix">
                         <div class="section-title">
-                            <h3 class="title">Order Product List</h3>
+                            <h3 class="title">{% trans "Order Product List" %}</h3>
                         </div>
 
                         <table class="shopping-cart-table table">
                             <tr>
-                                <th class="text-left">Id </th>
-                                <th class="text-left">Product Name </th>
-                                <th class="text-left">Price </th>
-                                <th class="text-left">Qauatity </th>
-                                <th class="text-left">Amount </th>
-                                <th class="text-left">Status </th>
-                                <th class="text-left">Date </th>
-                                <th class="text-left">Detail </th>
+                                <th class="text-left">{% trans "Id" %}</th>
+                                <th class="text-left">{% trans "Product Name " %}</th>
+                                <th class="text-left">{% trans "Price" %}</th>
+                                <th class="text-left">{% trans "Quantity" %}</th>
+                                <th class="text-left">{% trans "Amount" %}</th>
+                                <th class="text-left">{% trans "Status" %}</th>
+                                <th class="text-left">{% trans "Date" %}</th>
+                                <th class="text-left">{% trans "Detail" %}</th>
                             </tr>
                             {% for rs in order_product %}
                                 <tr>
                                     <td class="text-left">
-                                        <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">
+                                        <a href="{% url 'product_detail' rs.product_id rs.product.slug %}">
                                             {% if rs.variant.image_id > 0 %}
                                                 <img src="{{rs.variant.image }}" alt="" style="height: 80px">
                                             {% else %}
@@ -62,7 +62,7 @@
                                     <td class="text-left">{{ rs.amount}} </td>
                                     <td class="text-left">{{ rs.status}} </td>
                                     <td class="text-left">{{ rs.create_at}} </td>
-                                    <td class="text-left"><a class="primary-btn" href="/user/order_product_detail/{{ rs.id }}/{{ rs.order.id}}"> Detail </a></td>
+                                    <td class="text-left"><a class="primary-btn" href="{% url 'user_order_product_detail' rs.id rs.order.id %}">{% trans "Detail" %}  </a></td>
 
                                 </tr>
                             {% endfor %}

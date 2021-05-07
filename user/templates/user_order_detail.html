@@ -1,6 +1,7 @@
 {% extends 'homebase.html' %}
 {% load currency %}
-{% block title %} Детали заказа {% endblock %}
+{% load i18n %}
+{% block title %} {% trans "Order details" %} {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -92,8 +93,8 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/">Главная</a></li>
-                <li class="active">Детали заказа</li>
+                <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li class="active">{% trans "Order details" %}</li>
             </ul>
         </div>
     </div>
@@ -111,64 +112,64 @@
                 <div class="col-md-9">
                     <div class="order-summary clearfix">
                         <div class="section-title">
-                            <h3 class="title">Детали заказа</h3>
+                            <h3 class="title">{% trans "Order details" %}</h3>
                         </div>
 
                         <table class="shopping-cart-table table">
                             <tr>
-                                <th class="text-left">Имя Фамилия</th>
+                                <th class="text-left">{% trans "FirstName LastName" %}</th>
                                 <td class="text-left">{{ order.first_name}} {{ order.last_name }} </td>
                             </tr>
                             <tr>
-                                <th class="text-left">Телефон</th>
+                                <th class="text-left">{% trans "Phone" %}</th>
                                 <td class="text-left">{{ order.phone}}</td>
                             </tr>
                             <tr>
-                                <th class="text-left">Адрес</th>
+                                <th class="text-left">{% trans "Address" %}</th>
                                 <td class="text-left">{{ order.address}}</td>
                             </tr>
                             <tr>
-                                <th class="text-left">Город</th>
+                                <th class="text-left">{% trans "City" %}</th>
                                 <td class="text-left">{{ order.city}}</td>
                             </tr>
                             <tr>
-                                <th class="text-left">Страна</th>
+                                <th class="text-left">{% trans "Country" %}</th>
                                 <td class="text-left">{{ order.country}}</td>
                             </tr>
                             <tr>
-                                <th class="text-left">Статус</th>
+                                <th class="text-left">{% trans "Status" %}</th>
                                 <td class="text-left">{{ order.status}}</td>
                             </tr>
 
                             <tr>
-                                <th class="text-left">Дата</th>
+                                <th class="text-left">{% trans "Date" %}</th>
                                 <td class="text-left">{{ order.create_at}}</td>
                             </tr>
 
-                            <th class="text-left">Информация о доставке</th>
+                            <th class="text-left">{% trans "Information about delivery" %}</th>
                             <td class="text-left">{{ order.adminnote}}</td>
 
 
                         </table>
 
                         <div class="section-title">
-                            <h4 class="title">Список заказа</h4>
+                            <h4 class="title">{% trans "Order list" %}</h4>
                         </div>
 
                         <table class="shopping-cart-table table">
                             <tr>
-                                <th class="text-left">Id </th>
-                                <th class="text-left">Product Name </th>
-                                <th class="text-left">Price </th>
-                                <th class="text-left">Qauatity </th>
-                                <th class="text-left">Amount </th>
-                                <th class="text-left">Status </th>
-                                <th class="text-left">Date </th>
+                                <th class="text-left">{% trans "Id" %} </th>
+                                <th class="text-left">{% trans "Product Name" %} </th>
+                                <th class="text-left">{% trans "Price" %} </th>
+                                <th class="text-left">{% trans "Quantity" %} </th>
+                                <th class="text-left">{% trans "Amount" %} </th>
+                                <th class="text-left">{% trans "Status" %} </th>
+                                <th class="text-left">{% trans "Date" %} </th>
                             </tr>
                             {% for rs in orderitems %}
                                 <tr>
                                     <td class="text-left">
-                                        <a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">
+                                        <a href="{% url 'product_detail' rs.product_id rs.product.slug %}">
                                             {% if rs.variant.image_id > 0 %}
                                                 <img src="{{rs.variant.image }}" alt="" style="height: 50px">
                                             {% else %}
@@ -188,9 +189,9 @@
                         </table>
                         <table class="shopping-cart-table table">
                             <tr>
-                                <th class="text-left"><a class="animated-button" href="/user/export_csv/{{ order.id }}"> Экспорт в CSV </a></th>
-                                <th class="text-center"><a class="animated-button_1" href="/user/export_excel/{{ order.id }}"> Экспорт в Excel </a></th>
-                                <th class="text-right"><a class="animated-button_2" href="/user/export_pdf/{{ order.id }}"> Экспорт в PDF </a></th>
+                                <th class="text-left"><a class="animated-button" href="/user/export_csv/{{ order.id }}">{% trans "Export to CSV" %} </a></th>
+                                <th class="text-center"><a class="animated-button_1" href="/user/export_excel/{{ order.id }}"> {% trans "Export to Excel" %}</a></th>
+                                <th class="text-right"><a class="animated-button_2" href="/user/export_pdf/{{ order.id }}"> {% trans "Export to PDF" %}</a></th>
                             </tr>
                         </table>
                     </div>

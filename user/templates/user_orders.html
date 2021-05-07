@@ -1,6 +1,7 @@
 {% extends 'homebase.html' %}
 {% load currency %}
-{% block title %} Список заказов {% endblock %}
+{% load i18n %}
+{% block title %} {% trans "Orders list" %} {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -12,8 +13,8 @@
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="/">Главная</a></li>
-				<li class="active">Список заказов</li>
+				<li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+				<li class="active">{% trans "Orders list" %}</li>
 			</ul>
 		</div>
 	</div>
@@ -31,18 +32,18 @@
             <div class="col-md-9">
                     <div class="order-summary clearfix">
                         <div class="section-title">
-                            <h3 class="title">Список заказов</h3>
+                            <h3 class="title">{% trans "Orders list" %}</h3>
                         </div>
 
                         <table class="shopping-cart-table table">
                             <tr>
-                                <th class="text-left">Номер </th>
-                                <th class="text-left">Имя </th>
-                                <th class="text-left">Фамилия </th>
-                                <th class="text-left">Итого </th>
-                                <th class="text-left">Статус </th>
-                                <th class="text-left">Дата </th>
-                                <th class="text-left">Детали </th>
+                                <th class="text-left">{% trans "Id" %}</th>
+                                <th class="text-left">{% trans "First Name" %}</th>
+                                <th class="text-left">{% trans "Last Name" %}</th>
+                                <th class="text-left">{% trans "Total" %}</th>
+                                <th class="text-left">{% trans "Status" %}</th>
+                                <th class="text-left">{% trans "Date" %}</th>
+                                <th class="text-left">{% trans "Detail" %}</th>
                             </tr>
                             {% for rs in orders %}
                                 <tr>
@@ -52,7 +53,7 @@
                                     <td class="text-left">{{ rs.total|currency:request.session.currency }} {{ request.session.currency }} </td>
                                     <td class="text-left">{{ rs.status}} </td>
                                     <td class="text-left">{{ rs.create_at}} </td>
-                                    <td class="text-left"><a class="primary-btn" href="/user/orderdetail/{{ rs.id }}"> Детали </a></td>
+                                    <td class="text-left"><a class="primary-btn" href="{% url 'user_orderdetail' rs.id %}">{% trans "Detail" %}</a></td>
                                 </tr>
                             {% endfor %}
                         </table>

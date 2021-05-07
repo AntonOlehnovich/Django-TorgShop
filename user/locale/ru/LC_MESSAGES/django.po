@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 19:18+0300\n"
+"POT-Creation-Date: 2021-05-07 21:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,16 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\user\templates\login_form.html:15
+#: .\user\templates\login_form.html:3
+msgid "Authorization"
+msgstr "Авторизация"
+
+#: .\user\templates\login_form.html:15 .\user\templates\signup_form.html:15
+#: .\user\templates\user_comments.html:12
+#: .\user\templates\user_order_detail.html:96
+#: .\user\templates\user_order_products.html:15
+#: .\user\templates\user_orders.html:16 .\user\templates\user_password.html:15
+#: .\user\templates\user_profile.html:15 .\user\templates\user_update.html:15
 msgid "Home"
 msgstr "Главная"
 
@@ -32,5 +41,245 @@ msgstr "Авторизация"
 msgid "Login Form"
 msgstr "Форма авторизации"
 
-#~ msgid "Login"
-#~ msgstr "Авторизоваться"
+#: .\user\templates\login_form.html:47
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: .\user\templates\login_form.html:50
+msgid "Password"
+msgstr "Пароль"
+
+#: .\user\templates\login_form.html:52
+msgid "Login"
+msgstr "Авторизоваться"
+
+#: .\user\templates\signup_form.html:3 .\user\templates\signup_form.html:16
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: .\user\templates\signup_form.html:33
+msgid "Registration Form"
+msgstr "Форма регистрации"
+
+#: .\user\templates\signup_form.html:58
+msgid "Register now"
+msgstr "Зарегистрироваться"
+
+#: .\user\templates\user_comments.html:3 .\user\templates\user_comments.html:13
+msgid "User Reviews"
+msgstr "Отзывы пользователя"
+
+#: .\user\templates\user_comments.html:29
+msgid "List of reviews"
+msgstr "Список отзывов"
+
+#: .\user\templates\user_comments.html:33
+msgid "Product"
+msgstr "Продукт"
+
+#: .\user\templates\user_comments.html:34
+msgid "Rating"
+msgstr "Рейтинг"
+
+#: .\user\templates\user_comments.html:35
+msgid "Subject"
+msgstr "Тема"
+
+#: .\user\templates\user_comments.html:36
+msgid "Review"
+msgstr "Отзыв"
+
+#: .\user\templates\user_comments.html:37
+#: .\user\templates\user_order_detail.html:140
+#: .\user\templates\user_order_detail.html:166
+#: .\user\templates\user_order_products.html:44
+#: .\user\templates\user_orders.html:44
+msgid "Status"
+msgstr "Статус"
+
+#: .\user\templates\user_comments.html:38
+#: .\user\templates\user_order_detail.html:145
+#: .\user\templates\user_order_detail.html:167
+#: .\user\templates\user_order_products.html:45
+#: .\user\templates\user_orders.html:45
+msgid "Date"
+msgstr "Дата"
+
+#: .\user\templates\user_comments.html:39
+#: .\user\templates\user_order_products.html:46
+#: .\user\templates\user_order_products.html:65
+#: .\user\templates\user_orders.html:46 .\user\templates\user_orders.html:56
+msgid "Detail"
+msgstr "Детали"
+
+#: .\user\templates\user_comments.html:54
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\user\templates\user_order_detail.html:4
+#: .\user\templates\user_order_detail.html:97
+#: .\user\templates\user_order_detail.html:115
+#: .\user\templates\user_order_products.html:3
+msgid "Order details"
+msgstr "Детали заказа"
+
+#: .\user\templates\user_order_detail.html:120
+#: .\user\templates\user_profile.html:48
+msgid "FirstName LastName"
+msgstr "Имя Фамилия"
+
+#: .\user\templates\user_order_detail.html:124
+#: .\user\templates\user_profile.html:56
+msgid "Phone"
+msgstr "Телефон"
+
+#: .\user\templates\user_order_detail.html:128
+#: .\user\templates\user_profile.html:60
+msgid "Address"
+msgstr "Адрес"
+
+#: .\user\templates\user_order_detail.html:132
+#: .\user\templates\user_profile.html:64
+msgid "City"
+msgstr "Город"
+
+#: .\user\templates\user_order_detail.html:136
+#: .\user\templates\user_profile.html:68
+msgid "Country"
+msgstr "Страна"
+
+#: .\user\templates\user_order_detail.html:149
+msgid "Information about delivery"
+msgstr "Информация о доставке"
+
+#: .\user\templates\user_order_detail.html:156
+msgid "Order list"
+msgstr "Список заказа"
+
+#: .\user\templates\user_order_detail.html:161
+#: .\user\templates\user_order_products.html:39
+#: .\user\templates\user_orders.html:40
+msgid "Id"
+msgstr "Номер"
+
+#: .\user\templates\user_order_detail.html:162
+msgid "Product Name"
+msgstr "Наименование"
+
+#: .\user\templates\user_order_detail.html:163
+#: .\user\templates\user_order_products.html:41
+msgid "Price"
+msgstr "Цена"
+
+#: .\user\templates\user_order_detail.html:164
+#: .\user\templates\user_order_products.html:42
+msgid "Quantity"
+msgstr "Количество"
+
+#: .\user\templates\user_order_detail.html:165
+#: .\user\templates\user_order_products.html:43
+msgid "Amount"
+msgstr "Сумма"
+
+#: .\user\templates\user_order_detail.html:192
+msgid "Export to CSV"
+msgstr "Экспорт в CSV"
+
+#: .\user\templates\user_order_detail.html:193
+msgid "Export to Excel"
+msgstr "Экспорт в Excel"
+
+#: .\user\templates\user_order_detail.html:194
+msgid "Export to PDF"
+msgstr "Экспорт в PDF"
+
+#: .\user\templates\user_order_products.html:16
+msgid "Order Products"
+msgstr "Заказанные продукты"
+
+#: .\user\templates\user_order_products.html:34
+msgid "Order Product List"
+msgstr "Список продуктов заказа"
+
+#: .\user\templates\user_order_products.html:40
+msgid "Product Name "
+msgstr "Наименование"
+
+#: .\user\templates\user_orders.html:4 .\user\templates\user_orders.html:17
+#: .\user\templates\user_orders.html:35
+msgid "Orders list"
+msgstr "Список заказов"
+
+#: .\user\templates\user_orders.html:41
+msgid "First Name"
+msgstr "Имя"
+
+#: .\user\templates\user_orders.html:42
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: .\user\templates\user_orders.html:43
+msgid "Total"
+msgstr "Итого"
+
+#: .\user\templates\user_panel.html:4
+msgid "Menu"
+msgstr "Меню"
+
+#: .\user\templates\user_panel.html:8 .\user\templates\user_profile.html:16
+msgid "User profile"
+msgstr "Профиль пользователя"
+
+#: .\user\templates\user_panel.html:9
+msgid "My orders"
+msgstr "Мои заказы"
+
+#: .\user\templates\user_panel.html:10
+msgid "My ordered products"
+msgstr "Мои заказанные продукты"
+
+#: .\user\templates\user_panel.html:11
+msgid "My Comments"
+msgstr "Мои отзывы"
+
+#: .\user\templates\user_panel.html:12
+msgid "My Favorits"
+msgstr "Избранное"
+
+#: .\user\templates\user_panel.html:13
+msgid "My Products"
+msgstr "Мои продукты"
+
+#: .\user\templates\user_panel.html:14
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\user\templates\user_password.html:3 .\user\templates\user_password.html:16
+#: .\user\templates\user_password.html:36 .\user\templates\user_profile.html:43
+msgid "Change Password"
+msgstr "Изменить пароль"
+
+#: .\user\templates\user_password.html:62
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+#: .\user\templates\user_profile.html:3
+msgid "Profile"
+msgstr "Профиль"
+
+#: .\user\templates\user_profile.html:36
+msgid "Profile information"
+msgstr "Информация профиля"
+
+#: .\user\templates\user_profile.html:42 .\user\templates\user_update.html:3
+#: .\user\templates\user_update.html:16 .\user\templates\user_update.html:36
+msgid "Update profile"
+msgstr "Обновить профиль"
+
+#: .\user\templates\user_profile.html:52
+msgid "Email"
+msgstr "Электронная почта"
+
+#: .\user\templates\user_update.html:47
+msgid "Update"
+msgstr "Обновить"

@@ -1,6 +1,6 @@
 {% extends 'homebase.html' %}
-
-{% block title %} {{ user.first_name }} Обновить профиль {% endblock %}
+{% load i18n %}
+{% block title %} {{ user.first_name }} {% trans "Update profile" %} {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -12,8 +12,8 @@
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="/">Главная</a></li>
-				<li class="active">Обновить профиль</li>
+				<li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+				<li class="active">{% trans "Update profile" %}</li>
 			</ul>
 		</div>
 	</div>
@@ -33,7 +33,7 @@
                 <div class="col-md-9">
                     <div class="billing-details">
                         <div class="section-title">
-                            <h3 class="title">Обновить профиль</h3>
+                            <h3 class="title">{% trans "Update profile" %}</h3>
                         </div>
                    </div>
 
@@ -44,7 +44,7 @@
                             {{ profile_form.as_p  }}
                         </fieldset>
                         <div class="form-group">
-                            <button class="primary-btn" type="submit">Обновить</button>
+                            <button class="primary-btn" type="submit">{% trans "Update" %}</button>
                         </div>
                     </form>
 

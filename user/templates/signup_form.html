@@ -1,6 +1,6 @@
 {% extends 'homebase.html' %}
-
-{% block title %} Регистрация {{ setting.title }} {% endblock %}
+{% load i18n %}
+{% block title %} {% trans "Sign up" %} {{ setting.title }} {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -12,8 +12,8 @@
 	<div id="breadcrumb">
 		<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="/">Главная</a></li>
-				<li class="active">Регистрация</li>
+				<li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+				<li class="active">{% trans "Sign up" %}</li>
 			</ul>
 		</div>
 	</div>
@@ -30,7 +30,7 @@
                     <div class="billing-details">
 
                         <div class="section-title">
-                            <h3 class="title"> Форма регистрации </h3>
+                            <h3 class="title">{% trans "Registration Form" %}  </h3>
                         </div>
 
                         {% if messages %}
@@ -55,7 +55,7 @@
                                     {% endfor %}
                                 </p>
                             {% endfor %}
-                            <button type="submit" class="primary-btn">Зарегистрироваться</button>
+                            <button type="submit" class="primary-btn">{% trans "Register now" %}</button>
                         </form>
 
                     </div>

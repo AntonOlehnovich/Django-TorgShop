@@ -1,16 +1,17 @@
+{% load i18n %}
 <div class="billing-details">
     <div class="section-title">
-        <h3 class="title">Меню</h3>
+        <h3 class="title">{% trans "Menu" %}</h3>
     </div>
     <div class="aside">
     <ul class="list-links">
-        <li><a href="/user">Профиль пользователя</a></li>
-        <li><a href="/user/orders">Мои заказы</a></li>
-        <li><a href="/user/orders_product">Мои заказанные продукты</a></li>
-        <li><a href="/user/comments">Мои отзывы</a></li>
-        <li><a href="/user/favorits">Избранное</a></li>
-        <li><a href="/user/products">Мои продукты</a></li>
-        <li><a href="/logout">Выйти</a></li>
+        <li><a href="{% url 'index' %}">{% trans "User profile" %}</a></li>
+        <li><a href="{% url 'user_orders' %}">{% trans "My orders" %}</a></li>
+        <li><a href="{% url 'user_orders_product' %}">{% trans "My ordered products" %}</a></li>
+        <li><a href="{% url 'user_comments' %}">{% trans "My Comments" %}</a></li>
+        <li><a href="#">{% trans "My Favorits" %}</a></li>
+        <li><a href="#">{% trans "My Products" %}</a></li>
+        <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
     </ul>
 </div>
 </div>
