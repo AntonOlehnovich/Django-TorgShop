@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-07 19:18+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\order\templates\Order_Completed.html:3
+#: .\order\templates\Order_Completed.html:16
+#: .\order\templates\Order_Completed.html:31
+msgid "Order is accepted"
+msgstr "Заказ принят"
+
+#: .\order\templates\Order_Completed.html:15
+#: .\order\templates\Order_Form.html:16
+#: .\order\templates\shopcart_products.html:16
+msgid "Home"
+msgstr "Главная"
+
+#: .\order\templates\Order_Completed.html:34
+msgid "Dear"
+msgstr "Уважаемый(-ая)"
+
+#: .\order\templates\Order_Completed.html:36
+msgid "Your order is accepted"
+msgstr "Ваш заказ принят"
+
+#: .\order\templates\Order_Completed.html:37
+msgid "Order code: "
+msgstr "Код заказа: "
+
+#: .\order\templates\Order_Completed.html:38
+msgid "Thank you"
+msgstr "Спасибо"
+
+#: .\order\templates\Order_Form.html:4 .\order\templates\Order_Form.html:17
+msgid "Order Page"
+msgstr "Страница заказа"
+
+#: .\order\templates\Order_Form.html:34
+msgid "Shipping Details"
+msgstr "Отгрузочные реквизиты"
+
+#: .\order\templates\Order_Form.html:36
+msgid "First name:"
+msgstr "Имя:"
+
+#: .\order\templates\Order_Form.html:38
+msgid "Last name:"
+msgstr "Фамилия:"
+
+#: .\order\templates\Order_Form.html:40
+msgid "Address:"
+msgstr "Адрес:"
+
+#: .\order\templates\Order_Form.html:42
+msgid "Phone:"
+msgstr "Телефон:"
+
+#: .\order\templates\Order_Form.html:44
+msgid "City:"
+msgstr "Город:"
+
+#: .\order\templates\Order_Form.html:54
+msgid "Country:"
+msgstr "Страна:"
+
+#: .\order\templates\Order_Form.html:57
+msgid "Complete Order"
+msgstr "Завершить заказ"
+
+#: .\order\templates\Order_Form.html:65
+msgid "Payment Information"
+msgstr "Платежная информация"
+
+#: .\order\templates\Order_Form.html:67
+msgid "Total:"
+msgstr "Итого"
+
+#: .\order\templates\Order_Form.html:69
+msgid "Credit Card Holder"
+msgstr "Держатель кредитной карты"
+
+#: .\order\templates\Order_Form.html:71
+msgid "Credit Card Number"
+msgstr "Номер кредитной карты"
+
+#: .\order\templates\Order_Form.html:73
+msgid "Credit Exp Date/Year"
+msgstr "Срок действия месяц/год"
+
+#: .\order\templates\Order_Form.html:75
+msgid "Security Number"
+msgstr "Номер безопасности"
+
+#: .\order\templates\Order_Form.html:85
+#: .\order\templates\shopcart_products.html:32
+msgid "Shopcart Product List"
+msgstr "Список продуктов в корзине"
+
+#: .\order\templates\Order_Form.html:91
+#: .\order\templates\shopcart_products.html:38
+msgid "Product"
+msgstr "Продукт"
+
+#: .\order\templates\Order_Form.html:92
+#: .\order\templates\shopcart_products.html:39
+msgid "Price"
+msgstr "Цена"
+
+#: .\order\templates\Order_Form.html:93
+#: .\order\templates\shopcart_products.html:40
+msgid "Quantity"
+msgstr "Количество"
+
+#: .\order\templates\Order_Form.html:94
+#: .\order\templates\shopcart_products.html:41
+msgid "Total"
+msgstr "Итого"
+
+#: .\order\templates\Order_Form.html:136
+#: .\order\templates\shopcart_products.html:83
+msgid "SUBTOTAL"
+msgstr "ПРОМЕЖУТОЧНЫЙ ИТОГ"
+
+#: .\order\templates\Order_Form.html:141
+#: .\order\templates\shopcart_products.html:88
+msgid "SHIPING"
+msgstr "ДОСТАВКА"
+
+#: .\order\templates\Order_Form.html:142
+#: .\order\templates\shopcart_products.html:89
+msgid "Free Shipping"
+msgstr "Бесплатная доставка"
+
+#: .\order\templates\Order_Form.html:146
+#: .\order\templates\shopcart_products.html:93
+msgid "TOTAL"
+msgstr "ИТОГО"
+
+#: .\order\templates\shopcart_products.html:4
+msgid "Shop Cart"
+msgstr "Корзина покупок"
+
+#: .\order\templates\shopcart_products.html:17
+msgid "Shopcart"
+msgstr "Корзина"
+
+#: .\order\templates\shopcart_products.html:99
+msgid "Place Order"
+msgstr "Разместить заказ"
+
+#~ msgid "Delete! Are you sure?"
+#~ msgstr "Удалить! Вы уверены?"

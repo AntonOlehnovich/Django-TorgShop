@@ -89,9 +89,10 @@ def shopcart(request):
 
 @login_required(login_url='/login') # Check login
 def deletefromcart(request, id):
+    lasturl = request.META.get('HTTP_REFERER')
     ShopCart.objects.filter(id=id).delete()
     messages.success(request, "Your item deleted form Shopcart.")
-    return HttpResponseRedirect("/shopcart")
+    return HttpResponseRedirect(lasturl)
 
 
 @login_required(login_url='/login') # Check login

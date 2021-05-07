@@ -1,6 +1,7 @@
 {% extends 'homebase.html' %}
 {% load currency %}
-{% block title %} Shop Cart {% endblock %}
+{% load i18n %}
+{% block title %} {% trans "Shop Cart" %}  {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -12,8 +13,8 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li class="active">Shopcart</li>
+                <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li class="active">{% trans "Shopcart" %}</li>
             </ul>
         </div>
     </div>
@@ -28,16 +29,16 @@
                 <div class="col-md-12">
                     <div class="order-summary clearfix">
                         <div class="section-title">
-                            <h3 class="title">Shopcart Product List</h3>
+                            <h3 class="title">{% trans "Shopcart Product List" %}</h3>
                         </div>
                         <table class="shopping-cart-table table">
                             <thead>
                             <tr>
                                 <th></th>
-                                <th>Product</th>
-                                <th class="text-center">Price</th>
-                                <th class="text-center">Quantity</th>
-                                <th class="text-center">Total</th>
+                                <th>{% trans "Product" %}</th>
+                                <th class="text-center">{% trans "Price" %}</th>
+                                <th class="text-center">{% trans "Quantity" %}</th>
+                                <th class="text-center">{% trans "Total" %}</th>
                                 <th class="text-right"></th>
                             </tr>
                             </thead>
@@ -54,7 +55,7 @@
 
                                     </td>
                                     <td class="details">
-                                        <a href="/product/{{ rs.product.id }}/{{ rs.product.slug }}">{{rs.product}} {{ rs.variant.size }} {{ rs.variant.color }}</a>  </td>
+                                        <a href="{% url 'product_detail' rs.product.id rs.product.slug %}">{{rs.product}} {{ rs.variant.size }} {{ rs.variant.color }}</a>  </td>
                                     <td class="price text-center"><strong>
                                         {% if rs.product.variant == 'None' %}
                                             {{ rs.product.price|currency:request.session.currency }} {{ request.session.currency }}
@@ -70,7 +71,7 @@
                                             {{ rs.varamount|currency:request.session.currency }} {{ request.session.currency }}
                                         {% endif %}
                                     </strong></td>
-                                    <td class="text-right"><a href="/order/deletefromcart/{{ rs.id }}" onclick="return confirm('Delete ! Are you sure?')" class="main-btn icon-btn"><i class="fa fa-close"></i></a></td>
+                                    <td class="text-right"><a href="/order/deletefromcart/{{ rs.id }}" onclick="return confirm('Delete! Are you sure?')" class="main-btn icon-btn"><i class="fa fa-close"></i></a></td>
                                 </tr>
 
                             {% endfor %}
@@ -79,23 +80,23 @@
                             <tfoot>
                             <tr>
                                 <th class="empty" colspan="3"></th>
-                                <th>SUBTOTAL</th>
+                                <th>{% trans "SUBTOTAL" %}</th>
                                 <th colspan="2" class="sub-total">{{ total|currency:request.session.currency }} {{ request.session.currency }}</th>
                             </tr>
                             <tr>
                                 <th class="empty" colspan="3"></th>
-                                <th>SHIPING</th>
-                                <td colspan="2">Free Shipping</td>
+                                <th>{% trans "SHIPING" %}</th>
+                                <td colspan="2">{% trans "Free Shipping" %}</td>
                             </tr>
                             <tr>
                                 <th class="empty" colspan="3"></th>
-                                <th>TOTAL</th>
+                                <th>{% trans "TOTAL" %}</th>
                                 <th colspan="2" class="total">{{ total|currency:request.session.currency }} {{ request.session.currency }}</th>
                             </tr>
                             </tfoot>
                         </table>
                         <div class="pull-right">
-                            <a href="{% url 'orderproduct' %}" class="primary-btn">Place Order</a>
+                            <a href="{% url 'orderproduct' %}" class="primary-btn">{% trans "Place Order" %}</a>
                         </div>
                     </div>
 
