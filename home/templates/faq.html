@@ -1,6 +1,6 @@
 {% extends 'homebase.html' %}
-
-{% block title %} Часто задаваемые вопросы {% endblock %}
+{% load i18n %}
+{% block title %} {% trans "Frequently asked Questions" %} {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
@@ -20,8 +20,8 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="/">Главная</a></li>
-                <li class="active">Часто задаваемые вопросы</li>
+                <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li class="active">{% trans "Frequently asked Questions" %}</li>
             </ul>
         </div>
     </div>

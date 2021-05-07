@@ -1,7 +1,7 @@
 {% extends 'homebase.html' %}
 {% load currency %}
 {% load i18n %}
-{% block title %}{{ catdata.title }} Products{% endblock %}
+{% block title %}{{ catdata.title }} {% trans "Products" %} {% endblock %}
 {% block description %} {{ catdata.description }} {% endblock %}
 {% block keywords %} {{ category.keywords }} {% endblock %}
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 16:45+0300\n"
+"POT-Creation-Date: 2021-05-07 18:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,49 +20,61 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: .\home\templates\about.html:3 .\home\templates\about.html:16
+msgid "About us"
+msgstr "О нас"
+
 #: .\home\templates\about.html:15 .\home\templates\category_products.html:16
-#: .\home\templates\contactus.html:15 .\home\templates\product_detail.html:17
+#: .\home\templates\contactus.html:15 .\home\templates\faq.html:23
+#: .\home\templates\product_detail.html:17
 #: .\home\templates\search_products.html:16 .\home\templates\sidebar.html:43
 msgid "Home"
 msgstr "Главная"
 
-#: .\home\templates\about.html:16
-msgid "About us"
-msgstr "О нас"
-
+#: .\home\templates\category_products.html:4
 #: .\home\templates\category_products.html:17
 msgid "Products"
 msgstr "Продукты"
 
 #: .\home\templates\category_products.html:34
-#: .\home\templates\search_products.html:76
+#: .\home\templates\search_products.html:40
 msgid "Product List"
 msgstr "Список продуктов"
 
 #: .\home\templates\category_products.html:40
-#: .\home\templates\search_products.html:81
+#: .\home\templates\search_products.html:45
 msgid "Product"
 msgstr "Продукт"
 
 #: .\home\templates\category_products.html:41
-#: .\home\templates\search_products.html:84
+#: .\home\templates\search_products.html:48
 msgid "Price"
 msgstr "Цена"
 
 #: .\home\templates\category_products.html:42
-#: .\home\templates\search_products.html:85
+#: .\home\templates\search_products.html:49
 msgid "Quantity"
 msgstr "Количество"
 
 #: .\home\templates\category_products.html:60 .\home\templates\content.html:42
-#: .\home\templates\content.html:91 .\home\templates\search_products.html:105
+#: .\home\templates\content.html:91 .\home\templates\search_products.html:69
 msgid " Add to Cart"
 msgstr " В корзину"
 
 #: .\home\templates\category_products.html:62 .\home\templates\content.html:44
-#: .\home\templates\content.html:93 .\home\templates\search_products.html:107
+#: .\home\templates\content.html:93 .\home\templates\search_products.html:71
 msgid " Detail"
 msgstr " Детали"
+
+#: .\home\templates\color_list.html:5 .\home\templates\product_detail.html:132
+#: .\home\templates\product_detail.html:174
+#: .\home\templates\product_detail.html:197
+msgid "Color:"
+msgstr "Цвет:"
+
+#: .\home\templates\contactus.html:3 .\home\templates\contactus.html:54
+msgid "Contacts"
+msgstr "Контакты"
 
 #: .\home\templates\contactus.html:16
 msgid "Contact us"
@@ -76,10 +88,6 @@ msgstr "Форма обратной связи"
 msgid "Send"
 msgstr "Отправить"
 
-#: .\home\templates\contactus.html:54
-msgid "Contacts"
-msgstr "Контакты"
-
 #: .\home\templates\content.html:14
 msgid "Latest Products"
 msgstr "Последние продукты"
@@ -91,6 +99,10 @@ msgstr "Смотреть"
 #: .\home\templates\content.html:62
 msgid "Picked For You"
 msgstr "Подобрано для Вас"
+
+#: .\home\templates\faq.html:3 .\home\templates\faq.html:24
+msgid "Frequently asked Questions"
+msgstr "Часто задаваемые вопросы"
 
 #: .\home\templates\header.html:10
 msgid "Welcome to T-shop!"
@@ -170,12 +182,6 @@ msgstr "T-SHOP"
 msgid "Energy class:"
 msgstr "Энергетический класс:"
 
-#: .\home\templates\product_detail.html:132
-#: .\home\templates\product_detail.html:174
-#: .\home\templates\product_detail.html:197
-msgid "Color:"
-msgstr "Цвет:"
-
 #: .\home\templates\product_detail.html:196
 #: .\home\templates\product_detail.html:213
 msgid "Availability: "
@@ -237,17 +243,22 @@ msgstr "Отправить"
 msgid "You must be logged in to post a review"
 msgstr "Вы должны войти в систему, чтобы оставить отзыв"
 
+#: .\home\templates\search_products.html:4
 #: .\home\templates\search_products.html:17
 msgid "results"
 msgstr "результаты"
 
-#: .\home\templates\search_products.html:83
+#: .\home\templates\search_products.html:47
 msgid "Category"
 msgstr "Категория"
 
 #: .\home\templates\sidebar.html:16
 msgid "Categories"
 msgstr "Категории"
+
+#: .\home\templates\sidebar.html:41
+msgid "Menu"
+msgstr "Меню"
 
 #: .\home\templates\sidebar.html:44
 msgid "About Us"

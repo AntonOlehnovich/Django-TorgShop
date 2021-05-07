@@ -1,7 +1,7 @@
 {% extends 'homebase.html' %}
 {% load currency %}
 {% load i18n %}
-{% block title %} {{ query }} results {% endblock %}
+{% block title %} {{ query }} {% trans "results" %} {% endblock %}
 {% block description %} {{ setting.description }} {% endblock %}
 {% block keywords %} {{ setting.keywords }} {% endblock %}
 
