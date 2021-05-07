@@ -14,8 +14,8 @@
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="/category/{{ product.category.id }}/{{ product.category.slug }}">{{ product.category.title }}</a></li>
+                <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+                <li><a href="{% url 'category_products' product.category.id product.category.slug %}">{{ product.category.title }}</a></li>
                 <li class="active">{{ product.title }}</li>
             </ul>
         </div>
@@ -64,10 +64,6 @@
                     </div>
                     <div class="col-md-6">
                         <div class="product-body">
-                            <div class="product-label">
-                                <span>New</span>
-                                <span class="sale">-20%</span>
-                            </div>
                             <h2 class="product-name">{{ product.title }}</h2>
                             <div>
                                 <div class="product-rating">
@@ -78,10 +74,10 @@
                                     <i class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
                                     {{ product.avaregereview |stringformat:".2f"}}
                                 </div>
-                                <a href="#tab1"> {{ product.countreview}}  Review(s) / Add Review</a>
+                                <a href="#tab1"> {{ product.countreview}}  {% trans "Review(s) / Add Review" %}</a>
                             </div>
 
-                            <p><strong>Brand:</strong> E-SHOP</p>
+                            <p><strong>{% trans "Brand:" %}</strong> {% trans "T-SHOP" %}</p>
                             <p>{{ product.description }}</p>
 
 
@@ -118,7 +114,7 @@
                                             <div class="size-option">
                                                 <form method="POST" id="post-form">
                                                     <input type="hidden" name="productid" id="productid" value="{{ product.id }}">
-                                                    <span class="text-uppercase">Size :</span>
+                                                    <span class="text-uppercase">{% trans "Energy class:" %}</span>
                                                     {% csrf_token %}
                                                     <select name="size" id="size">
                                                         {% for rs in sizes %}
@@ -133,7 +129,7 @@
                                                 <div id="appendHere">
                                                     <input type="hidden" name="size" id="size" value="{{ size_id }}">
                                                     <ul class="color-option" >
-                                                        <li><span class="text-uppercase">Color:</span></li>
+                                                        <li><span class="text-uppercase">{% trans "Color:" %}</span></li>
                                                         {% for rs in colors %}
                                                             <input type="radio"  {% if variant.id == rs.id %} checked {% endif %} name="variantid" id="variantid" value="{{ rs.id }}" onchange="this.form.submit();">
                                                             <li  {% if variant.id == rs.id %} class="active" {% endif %}>
@@ -155,7 +151,7 @@
                                             <div id="appendHere">
                                                 <input type="hidden" name="size" id="size" value="{{ size_id }}">
                                                 <ul class="color-option" >
-                                                    <li><span class="text-uppercase">Size:</span></li>
+                                                    <li><span class="text-uppercase">{% trans "Energy class:" %}</span></li>
                                                     {% for rs in sizes %}
                                                         <input type="radio"  {% if variant.id == rs.id %} checked {% endif %} name="variantid" id="variantid" value="{{ rs.id }}" onchange="this.form.submit();">
                                                         <li  {% if variant.id == rs.id %} class="active" {% endif %}>
@@ -175,7 +171,7 @@
                                             <div id="appendHere">
                                                 <input type="hidden" name="size" id="size" value="{{ size_id }}">
                                                 <ul class="color-option" >
-                                                    <li><span class="text-uppercase">Color:</span></li>
+                                                    <li><span class="text-uppercase">{% trans "Color:" %}</span></li>
                                                     {% for rs in colors %}
                                                         <input type="radio"  {% if variant.id == rs.id %} checked {% endif %} name="variantid" id="variantid" value="{{ rs.id }}" onchange="this.form.submit();">
                                                         <li  {% if variant.id == rs.id %} class="active" {% endif %}>
@@ -197,14 +193,14 @@
                                     {% csrf_token %}
                                     <input type="hidden" name="variantid" id="variantid" value="{{ variant.id }}">
                                     <div id="SelectedProduct">
-                                        <p><strong>Availability:</strong> {% if variant.quantity > 0  %} In Stock {% else %} Out of Stock {% endif %}</p>
-                                        <p><strong>Selected :</strong> Size : {{ variant.size }}  Color : {{ variant.color }} </p>
+                                        <p><strong>{% trans "Availability: " %}</strong> {% if variant.quantity > 0  %} {% trans "In Stock" %} {% else %} {% trans "Out of Stock" %} {% endif %}</p>
+                                        <p><strong>{% trans "Selected: " %}</strong> {% trans "Energy class:" %} {{ variant.size }}  {% trans "Color:" %} {{ variant.color }} </p>
                                         <h3 class="product-price">${{ variant.price|currency:request.session.currency}} {{ request.session.currency }}</h3>
                                         <div class="qty-input">
-                                            <span class="text-uppercase">QTY: </span>
+                                            <span class="text-uppercase">{% trans "QTY:" %} </span>
                                             <input class="input" name="quantity" type="number" value="1" min="1" max="{{ variant.quantity }}">
                                             <button type="submit" {% if variant.quantity < 1  %} disabled {% endif %} class="primary-btn add-to-cart">
-                                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                                                <i class="fa fa-shopping-cart"></i> {% trans "Add to Cart" %}
                                             </button>
                                         </div>
                                     </div>
@@ -214,13 +210,13 @@
                                 <form action="/order/addtoshopcart/{{ product.id }}" method="post"  id="addchart-form">
                                     {% csrf_token %}
                                     <div id="SelectedProduct">
-                                        <p><strong>Availability:</strong> {% if product.amount > 0  %} In Stock {% else %} Out of Stock {% endif %}</p>
+                                        <p><strong>{% trans "Availability: " %}</strong> {% if product.amount > 0  %} {% trans "In Stock" %} {% else %} {% trans "Out of Stock" %} {% endif %}</p>
                                         <h3 class="product-price">{{ product.price|currency:request.session.currency }} {{ request.session.currency }}</h3>
                                         <div class="qty-input">
-                                            <span class="text-uppercase">QTY: </span>
+                                            <span class="text-uppercase">{% trans "QTY:" %} </span>
                                             <input class="input" name="quantity" type="number" value="1" min="1" max="{{ product.amount }}">
                                             <button type="submit" {% if product.amount < 1  %} disabled {% endif %} class="primary-btn add-to-cart">
-                                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                                                <i class="fa fa-shopping-cart"></i> {% trans "Add to Cart" %}
                                             </button>
                                         </div>
                                     </div>
@@ -241,8 +237,8 @@
             <div class="col-md-12">
                 <div class="product-tab">
                     <ul class="tab-nav">
-                        <li class="active"><a data-toggle="tab" href="#tab1">Details</a></li>
-                        <li><a data-toggle="tab" href="#tab2">Reviews ({{ product.countreview}} )</a></li>
+                        <li class="active"><a data-toggle="tab" href="#tab1">{% trans "Details" %}</a></li>
+                        <li><a data-toggle="tab" href="#tab2">{% trans "Reviews" %} ({{ product.countreview}} )</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="tab1" class="tab-pane fade in active">
@@ -275,16 +271,10 @@
                                                 </div>
                                             </div>
                                         {% endfor %}
-                                        <ul class="reviews-pages">
-                                            <li class="active">1</li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h4 class="text-uppercase">Write Your Review</h4>
+                                    <h4 class="text-uppercase">{% trans "Write Your Review" %}</h4>
                                     {% if messages %}
                                         {% for message in messages %}
                                             <div class="alert alert-{{message.tags}}" role="alert">
@@ -295,14 +285,14 @@
                                     <form class="review-form" action="/product/addcomment/{{ product.id }}" method="post">
                                         {% csrf_token %}
                                         <div class="form-group">
-                                            <input name="subject" class="input" type="text" placeholder="Your subject" />
+                                            <input name="subject" class="input" type="text" placeholder="{% trans "Your subject" %}" />
                                         </div>
                                         <div class="form-group">
-                                            <textarea name="comment" class="input" placeholder="Your review"></textarea>
+                                            <textarea name="comment" class="input" placeholder="{% trans "Your review" %}"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-rating">
-                                                <strong class="text-uppercase">Your Rating: </strong>
+                                                <strong class="text-uppercase">{% trans "Your Rating:" %} </strong>
                                                 <div class="stars">
                                                     <input type="radio" id="star5" name="rate" value="5" /><label for="star5"></label>
                                                     <input type="radio" id="star4" name="rate" value="4" /><label for="star4"></label>
@@ -313,9 +303,9 @@
                                             </div>
                                         </div>
                                         {% if user.id is not None %}
-                                            <button class="primary-btn">Submit</button>
+                                            <button class="primary-btn">{% trans "Submit" %}</button>
                                         {% else %}
-                                            You must be logged in to post a review
+                                            {% trans "You must be logged in to post a review" %}
                                         {% endif %}
                                     </form>
                                 </div>

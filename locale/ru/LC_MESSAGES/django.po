@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-03 19:40+0300\n"
+"POT-Creation-Date: 2021-05-07 16:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,22 +20,22 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\TorgShop\settings.py:115
+#: .\TorgShop\settings.py:117
 msgid "English"
 msgstr "Английский"
 
-#: .\TorgShop\settings.py:116
+#: .\TorgShop\settings.py:118
 msgid "Russian"
 msgstr "Русский"
 
-#: .\TorgShop\urls.py:35
+#: .\TorgShop\urls.py:38
 msgid "admin/"
 msgstr "admin/"
 
-#: .\TorgShop\urls.py:44
+#: .\TorgShop\urls.py:47
 msgid "about/"
 msgstr "about/"
 
-#: .\TorgShop\urls.py:45
+#: .\TorgShop\urls.py:48
 msgid "contact/"
 msgstr "contact/"

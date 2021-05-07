@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-03 19:40+0300\n"
+"POT-Creation-Date: 2021-05-07 16:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,70 +20,243 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\home\templates\header.html:9
+#: .\home\templates\about.html:15 .\home\templates\category_products.html:16
+#: .\home\templates\contactus.html:15 .\home\templates\product_detail.html:17
+#: .\home\templates\search_products.html:16 .\home\templates\sidebar.html:43
+msgid "Home"
+msgstr "Главная"
+
+#: .\home\templates\about.html:16
+msgid "About us"
+msgstr "О нас"
+
+#: .\home\templates\category_products.html:17
+msgid "Products"
+msgstr "Продукты"
+
+#: .\home\templates\category_products.html:34
+#: .\home\templates\search_products.html:76
+msgid "Product List"
+msgstr "Список продуктов"
+
+#: .\home\templates\category_products.html:40
+#: .\home\templates\search_products.html:81
+msgid "Product"
+msgstr "Продукт"
+
+#: .\home\templates\category_products.html:41
+#: .\home\templates\search_products.html:84
+msgid "Price"
+msgstr "Цена"
+
+#: .\home\templates\category_products.html:42
+#: .\home\templates\search_products.html:85
+msgid "Quantity"
+msgstr "Количество"
+
+#: .\home\templates\category_products.html:60 .\home\templates\content.html:42
+#: .\home\templates\content.html:91 .\home\templates\search_products.html:105
+msgid " Add to Cart"
+msgstr " В корзину"
+
+#: .\home\templates\category_products.html:62 .\home\templates\content.html:44
+#: .\home\templates\content.html:93 .\home\templates\search_products.html:107
+msgid " Detail"
+msgstr " Детали"
+
+#: .\home\templates\contactus.html:16
+msgid "Contact us"
+msgstr "Контакты"
+
+#: .\home\templates\contactus.html:34
+msgid "Contact Form"
+msgstr "Форма обратной связи"
+
+#: .\home\templates\contactus.html:46
+msgid "Send"
+msgstr "Отправить"
+
+#: .\home\templates\contactus.html:54
+msgid "Contacts"
+msgstr "Контакты"
+
+#: .\home\templates\content.html:14
+msgid "Latest Products"
+msgstr "Последние продукты"
+
+#: .\home\templates\content.html:23 .\home\templates\content.html:73
+msgid "Quick view"
+msgstr "Смотреть"
+
+#: .\home\templates\content.html:62
+msgid "Picked For You"
+msgstr "Подобрано для Вас"
+
+#: .\home\templates\header.html:10
 msgid "Welcome to T-shop!"
 msgstr "Добро пожаловать в T-shop!"
 
-#: .\home\templates\header.html:21
+#: .\home\templates\header.html:22
 msgid "Store"
 msgstr "Магазин"
 
-#: .\home\templates\header.html:22
+#: .\home\templates\header.html:23
 msgid "Newsletter"
 msgstr "Новости"
 
-#: .\home\templates\header.html:23
+#: .\home\templates\header.html:24
 msgid "FAQ"
 msgstr "ЧЗВ"
 
-#: .\home\templates\header.html:92
+#: .\home\templates\header.html:69
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\home\templates\header.html:111
+msgid "Enter a keyword"
+msgstr "Введите ключевое слово"
+
+#: .\home\templates\header.html:113
 msgid "All Categories"
 msgstr "Все"
 
-#: .\home\templates\header.html:125
+#: .\home\templates\header.html:146
 msgid "Login"
 msgstr "Авторизация"
 
-#: .\home\templates\header.html:125
+#: .\home\templates\header.html:146
 msgid "Sign Up"
 msgstr "Регистрация"
 
-#: .\home\templates\header.html:129
+#: .\home\templates\header.html:150
 msgid "My Account"
 msgstr "Мой профиль"
 
-#: .\home\templates\header.html:130
+#: .\home\templates\header.html:151
 msgid "My Favorits"
 msgstr "Избранное"
 
-#: .\home\templates\header.html:131
+#: .\home\templates\header.html:152
 msgid "My Orders "
 msgstr "Мои заказы"
 
-#: .\home\templates\header.html:132
+#: .\home\templates\header.html:153
 msgid "My Comments"
 msgstr "Мои отзывы"
 
-#: .\home\templates\header.html:133
+#: .\home\templates\header.html:154
 msgid "Logout"
 msgstr "Выйти"
 
-#: .\home\templates\header.html:149
+#: .\home\templates\header.html:170
 msgid "My Cart:"
-msgstr "Корзина"
+msgstr "Корзина:"
+
+#: .\home\templates\product_detail.html:77
+msgid "Review(s) / Add Review"
+msgstr "Отзыв(-ов) / Добавить отзыв"
+
+#: .\home\templates\product_detail.html:80
+msgid "Brand:"
+msgstr "Бренд:"
+
+#: .\home\templates\product_detail.html:80
+msgid "T-SHOP"
+msgstr "T-SHOP"
+
+#: .\home\templates\product_detail.html:117
+#: .\home\templates\product_detail.html:154
+#: .\home\templates\product_detail.html:197
+msgid "Energy class:"
+msgstr "Энергетический класс:"
+
+#: .\home\templates\product_detail.html:132
+#: .\home\templates\product_detail.html:174
+#: .\home\templates\product_detail.html:197
+msgid "Color:"
+msgstr "Цвет:"
+
+#: .\home\templates\product_detail.html:196
+#: .\home\templates\product_detail.html:213
+msgid "Availability: "
+msgstr "Доступность: "
+
+#: .\home\templates\product_detail.html:196
+#: .\home\templates\product_detail.html:213
+msgid "In Stock"
+msgstr "В наличии"
+
+#: .\home\templates\product_detail.html:196
+#: .\home\templates\product_detail.html:213
+msgid "Out of Stock"
+msgstr "Нет на складе"
+
+#: .\home\templates\product_detail.html:197
+msgid "Selected: "
+msgstr "Выбрано: "
+
+#: .\home\templates\product_detail.html:200
+#: .\home\templates\product_detail.html:216
+msgid "QTY:"
+msgstr "КОЛ-ВО:"
+
+#: .\home\templates\product_detail.html:203
+#: .\home\templates\product_detail.html:219
+msgid "Add to Cart"
+msgstr "В корзину"
+
+#: .\home\templates\product_detail.html:240
+msgid "Details"
+msgstr " Детали"
+
+#: .\home\templates\product_detail.html:241
+msgid "Reviews"
+msgstr "Отзывы"
+
+#: .\home\templates\product_detail.html:277
+msgid "Write Your Review"
+msgstr "Напишите свой отзыв"
+
+#: .\home\templates\product_detail.html:288
+msgid "Your subject"
+msgstr "Ваша тема"
+
+#: .\home\templates\product_detail.html:291
+msgid "Your review"
+msgstr "Ваш отзыв"
+
+#: .\home\templates\product_detail.html:295
+msgid "Your Rating:"
+msgstr "Ваш рейтинг:"
+
+#: .\home\templates\product_detail.html:306
+msgid "Submit"
+msgstr "Отправить"
+
+#: .\home\templates\product_detail.html:308
+msgid "You must be logged in to post a review"
+msgstr "Вы должны войти в систему, чтобы оставить отзыв"
+
+#: .\home\templates\search_products.html:17
+msgid "results"
+msgstr "результаты"
+
+#: .\home\templates\search_products.html:83
+msgid "Category"
+msgstr "Категория"
 
 #: .\home\templates\sidebar.html:16
 msgid "Categories"
 msgstr "Категории"
 
-#: .\home\templates\sidebar.html:50
-msgid "Home"
-msgstr "Главная"
-
-#: .\home\templates\sidebar.html:51
+#: .\home\templates\sidebar.html:44
 msgid "About Us"
 msgstr "О нас"
 
-#: .\home\templates\sidebar.html:52
+#: .\home\templates\sidebar.html:45
 msgid "Contact Us"
 msgstr "Контакты"
+
+#: .\home\templates\slider.html:20
+msgid "Shop Now"
+msgstr "Купить сейчас"

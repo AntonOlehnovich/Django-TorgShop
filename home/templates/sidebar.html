@@ -19,7 +19,11 @@
             {% load myapptags %}
             {% if LANGUAGE_CODE is None %}
                 {% get_current_language as LANGUAGE_CODE %}
-                {% categoryTree 0 '' LANGUAGE_CODE as category %}
+                {% if LANGUAGE_CODE == 'en-us' %}
+                    {% categoryTree 0 '' 'en' as category %}
+                {% else %}
+                    {% categoryTree 0 '' LANGUAGE_CODE as category %}
+                {% endif %}
             {% else %}
                 {% categoryTree 0 '' 'en' as category %}
             {% endif %}
