@@ -156,7 +156,7 @@
                                                         <input type="radio"  {% if variant.id == rs.id %} checked {% endif %} name="variantid" id="variantid" value="{{ rs.id }}" onchange="this.form.submit();">
                                                         <li  {% if variant.id == rs.id %} class="active" {% endif %}>
                                                             <a style=" color: #204d74;  width: 90px">
-                                                                ${{ rs.size }}<br> {{ rs.price|currency:request.session.currency }} {{ request.session.currency }}
+                                                                {{ rs.size }}<br> {{ rs.price|currency:request.session.currency }} {{ request.session.currency }}
                                                             </a>
                                                         </li>
                                                     {% endfor %}
@@ -195,7 +195,7 @@
                                     <div id="SelectedProduct">
                                         <p><strong>{% trans "Availability: " %}</strong> {% if variant.quantity > 0  %} {% trans "In Stock" %} {% else %} {% trans "Out of Stock" %} {% endif %}</p>
                                         <p><strong>{% trans "Selected: " %}</strong> {% trans "Energy class:" %} {{ variant.size }}  {% trans "Color:" %} {{ variant.color }} </p>
-                                        <h3 class="product-price">${{ variant.price|currency:request.session.currency}} {{ request.session.currency }}</h3>
+                                        <h3 class="product-price">{{ variant.price|currency:request.session.currency}} {{ request.session.currency }}</h3>
                                         <div class="qty-input">
                                             <span class="text-uppercase">{% trans "QTY:" %} </span>
                                             <input class="input" name="quantity" type="number" value="1" min="1" max="{{ variant.quantity }}">

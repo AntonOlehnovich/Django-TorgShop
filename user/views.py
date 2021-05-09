@@ -184,7 +184,7 @@ def user_order_product_detail(request, id, oid):
     }
     return render(request, 'user_order_detail.html', context)
 
-
+@login_required(login_url='/login') # Check login
 def user_comments(request):
     #category = Category.objects.all()
     current_user = request.user

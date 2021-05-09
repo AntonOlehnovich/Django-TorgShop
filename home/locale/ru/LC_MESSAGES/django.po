@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-07 21:08+0300\n"
+"POT-Creation-Date: 2021-05-09 13:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,6 +104,68 @@ msgstr "Подобрано для Вас"
 msgid "Frequently asked Questions"
 msgstr "Часто задаваемые вопросы"
 
+#: .\home\templates\footer.html:20
+msgid ""
+"In this section you will find a lot of useful information for you!It's easy "
+"to work with a plus and with pleasure! Try ..."
+msgstr ""
+"В этом разделе Вы найдете много полезной для Вас информации! Работать в плюс "
+"и с удовольствием — легко! Попробуйте…"
+
+#: .\home\templates\footer.html:38 .\home\templates\footer.html:40
+#: .\home\templates\header.html:150
+msgid "My Account"
+msgstr "Мой профиль"
+
+#: .\home\templates\footer.html:41 .\home\templates\header.html:152
+msgid "My Orders "
+msgstr "Мои заказы"
+
+#: .\home\templates\footer.html:42 .\home\templates\header.html:153
+msgid "My Comments"
+msgstr "Мои отзывы"
+
+#: .\home\templates\footer.html:43 .\home\templates\header.html:154
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\home\templates\footer.html:44 .\home\templates\header.html:146
+msgid "Login"
+msgstr "Авторизация"
+
+#: .\home\templates\footer.html:55
+msgid "INFORMATION"
+msgstr "ИНФОРМАЦИЯ"
+
+#: .\home\templates\footer.html:57 .\home\templates\sidebar.html:44
+msgid "About Us"
+msgstr "О нас"
+
+#: .\home\templates\footer.html:58 .\home\templates\sidebar.html:45
+msgid "Contact Us"
+msgstr "Контакты"
+
+#: .\home\templates\footer.html:59 .\home\templates\header.html:24
+msgid "FAQ"
+msgstr "ЧЗВ"
+
+#: .\home\templates\footer.html:68
+msgid "News portal"
+msgstr "Новостной портал"
+
+#: .\home\templates\footer.html:69
+msgid ""
+"Delivery is carried out on the terms of self-pickup - FCA Baranovichi "
+"(according to Incoterms 2010), with shipment, the necessary package of "
+"documents is required."
+msgstr ""
+"Поставка осуществляется на условиях самовывоза - FCA Барановичи (согласно "
+"Инкотермс 2010), с отгрузкой предоставляется необходимый пакет документов."
+
+#: .\home\templates\footer.html:71
+msgid "Read more"
+msgstr "Читать далее"
+
 #: .\home\templates\header.html:10
 msgid "Welcome to T-shop!"
 msgstr "Добро пожаловать в T-shop!"
@@ -115,10 +177,6 @@ msgstr "Магазин"
 #: .\home\templates\header.html:23
 msgid "Newsletter"
 msgstr "Новости"
-
-#: .\home\templates\header.html:24
-msgid "FAQ"
-msgstr "ЧЗВ"
 
 #: .\home\templates\header.html:69
 msgid "Save"
@@ -133,32 +191,12 @@ msgid "All Categories"
 msgstr "Все"
 
 #: .\home\templates\header.html:146
-msgid "Login"
-msgstr "Авторизация"
-
-#: .\home\templates\header.html:146
 msgid "Sign Up"
 msgstr "Регистрация"
-
-#: .\home\templates\header.html:150
-msgid "My Account"
-msgstr "Мой профиль"
 
 #: .\home\templates\header.html:151
 msgid "My Favorits"
 msgstr "Избранное"
-
-#: .\home\templates\header.html:152
-msgid "My Orders "
-msgstr "Мои заказы"
-
-#: .\home\templates\header.html:153
-msgid "My Comments"
-msgstr "Мои отзывы"
-
-#: .\home\templates\header.html:154
-msgid "Logout"
-msgstr "Выйти"
 
 #: .\home\templates\header.html:170
 msgid "My Cart:"
@@ -259,14 +297,6 @@ msgstr "Категории"
 #: .\home\templates\sidebar.html:41
 msgid "Menu"
 msgstr "Меню"
-
-#: .\home\templates\sidebar.html:44
-msgid "About Us"
-msgstr "О нас"
-
-#: .\home\templates\sidebar.html:45
-msgid "Contact Us"
-msgstr "Контакты"
 
 #: .\home\templates\slider.html:20
 msgid "Shop Now"

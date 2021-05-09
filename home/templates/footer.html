@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!-- FOOTER -->
 	<footer id="footer" class="section section-grey">
 		<!-- container -->
@@ -16,15 +17,15 @@
 						</div>
 						<!-- /footer logo -->
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+						<p>{% trans "In this section you will find a lot of useful information for you!It's easy to work with a plus and with pleasure! Try ..." %}</p>
 
 						<!-- footer social -->
 						<ul class="footer-social">
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+							<li><a href="{{ setting.facebook }}"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="{{ setting.twitter }}"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="{{ setting.instagram }}"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="http://beltorgmash.com/"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.youtube.com/channel/UC0gX8JQHcP_bqZ4EMhnq9fw"><i class="fa fa-youtube"></i></a></li>
 						</ul>
 						<!-- /footer social -->
 					</div>
@@ -34,13 +35,13 @@
 				<!-- footer widget -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">My Account</h3>
+						<h3 class="footer-header">{% trans "My Account" %}</h3>
 						<ul class="list-links">
-							<li><a href="/user">My Account</a></li>
-							<li><a href="#">My Wishlist</a></li>
-							<li><a href="#">Compare</a></li>
-							<li><a href="#">Checkout</a></li>
-							<li><a href="#">Login</a></li>
+							<li><a href="{% url 'index' %}">{% trans "My Account" %}</a></li>
+							<li><a href="{% url 'user_orders' %}">{% trans "My Orders " %}</a></li>
+							<li><a href="{% url 'user_comments' %}">{% trans "My Comments" %}</a></li>
+							<li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
+							<li><a href="{% url 'login' %}">{% trans "Login" %}</a></li>
 						</ul>
 					</div>
 				</div>
@@ -51,12 +52,11 @@
 				<!-- footer widget -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">Customer Service</h3>
+						<h3 class="footer-header">{% trans "INFORMATION" %}</h3>
 						<ul class="list-links">
-							<li><a href="/about">О нас</a></li>
-							<li><a href="#">Shiping & Return</a></li>
-							<li><a href="#">Shiping Guide</a></li>
-							<li><a href="/faq">FAQ</a></li>
+							<li><a href="{% url 'aboutus' %}">{% trans "About Us" %}</a></li>
+							<li><a href="{% url 'contactus' %}">{% trans "Contact Us" %}</a></li>
+							<li><a href="{% url 'faq' %}">{% trans "FAQ" %}</a></li>
 						</ul>
 					</div>
 				</div>
@@ -65,13 +65,10 @@
 				<!-- footer subscribe -->
 				<div class="col-md-3 col-sm-6 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-header">Stay Connected</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+						<h3 class="footer-header">{% trans "News portal" %}</h3>
+						<p>{% trans "Delivery is carried out on the terms of self-pickup - FCA Baranovichi (according to Incoterms 2010), with shipment, the necessary package of documents is required." %}</p>
 						<form>
-							<div class="form-group">
-								<input class="input" placeholder="Enter Email Address">
-							</div>
-							<button class="primary-btn">Join Newslatter</button>
+							<a class="btn-link" href="http://beltorgmash.com/klientam">{% trans "Read more" %}</a>
 						</form>
 					</div>
 				</div>
@@ -85,7 +82,7 @@
 					<!-- footer copyright -->
 					<div class="footer-copyright">
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This project is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="http://beltorgmash.com/" target="_blank">T-SHOP</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</div>
 					<!-- /footer copyright -->
